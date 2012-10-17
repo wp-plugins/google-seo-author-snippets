@@ -27,7 +27,7 @@
 ***********************************************************************************************
 */
 
-define('SMACK_IMAGE_URL', get_bloginfo('wpurl').'/wp-content/plugins/google-seo-author-snippets-plugin/images/');
+define('SMACK_IMAGE_URL', get_bloginfo('wpurl').'/wp-content/plugins/google-seo-author-snippets/images/');
 
 $FieldNames[0] = array(
 		'g_image' => 'googleplus-icon-setone.png',
@@ -103,5 +103,5 @@ function admin_menus() {
 }  
    add_action("admin_menu", "admin_menus"); 
 
-wp_enqueue_script("microdata_configuration_page", "/wp-content/plugins/google-seo-author-snippets-plugin/js/smack-microdata.js", array("jquery"));
+wp_enqueue_script("microdata_configuration_page", "/wp-content/plugins/google-seo-author-snippets/js/smack-microdata.js", array("jquery"));
 ?>
