@@ -42,12 +42,14 @@ $config = get_option('smack_microdata_imageset');
 						$fimg=$array[f_image_url].$array[f_image];
 						$timg=$array[t_image_url].$array[t_image];
 						$limg=$array[l_image_url].$array[l_image];
+						$loc=$array[location_url].$array[location_image];
 					?>
 						<input type="radio" id="imageset<?php echo $id; ?>" name="imageset" value="Imageset<?php echo $id; ?>" <?php if($id == $img_set['imageset']) {?> Checked <?php } ?>/> &nbsp; &nbsp; &nbsp; &nbsp;
 						<span><img src="<?php echo $gimg; ?>" /></span> &nbsp; &nbsp; &nbsp;
 						<span><img src="<?php echo $fimg; ?>" /></span> &nbsp; &nbsp; &nbsp;
 						<span><img src="<?php echo $timg; ?>" /></span> &nbsp; &nbsp; &nbsp;
-						<span><img src="<?php echo $limg; ?>" /></span> &nbsp; &nbsp; &nbsp;</br>
+						<span><img src="<?php echo $limg; ?>" /></span> &nbsp; &nbsp; &nbsp;
+						<span><img src="<?php echo $loc ; ?>" /></span> &nbsp; &nbsp; &nbsp;</br>
 					<?php
 						$id++;
 					}

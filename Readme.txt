@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fenzi
 Tags: google, plugin, admin, comments, twitter, links, author, custom, dashboard, facebook,  
 Requires at least: 3.4 
 Tested up to: 3.4.2 
-Stable tag: 1.0.0 
+Stable tag: 1.0.1 
 License: GPLv2 or later 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
@@ -66,20 +66,22 @@ Google Seo Author Snippet Plugin is very easy to install like any other wordpres
 
 == Changelog == 
 
-1.0.0 
+1.0.0 		Initial release version. Tested and found works well without any issues. 
 
-Initial release version. Tested and found works well without any issues. 
+1.0.1		Image Conflicts Bug Fixed, Added Extra Social Iconsets.
 
 
 == Upgrade Notice == 
 
-Initial release of plugin v1.0.0 
+v1.0.0		Initial release of plugin 
+
+v1.0.1		Bug fix - Image conflicts, Added Extra Social Iconsets.
 
 
 == Frequently Asked Questions == 
 
 1. How to install the plugin? 
-  Like other plugins google_seo_autho_snippet_plugin is easy to install. Upload the google_seo_autho_snippet_plugin.zip file through plugin install page through wp admin. Everything will work fine with it. 
+   Like other plugins google_seo_autho_snippet_plugin is easy to install. Upload the google_seo_autho_snippet_plugin.zip file through plugin install page through wp admin. Everything will work fine with it. 
 
 2. How to configure the plugin? 
 

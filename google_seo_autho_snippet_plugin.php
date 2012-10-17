@@ -3,7 +3,7 @@
 *Plugin Name: Google Seo Author Snippet Plugin
 *Plugin URI: http://www.smackcoders.com/google-seo-author-snippet-wordpress-plugin.html
 *Description: A plugin that Manages the user's social profile details
-*Version: 1.0.0
+*Version: 1.0.1
 *Author: smackcoders.com
 *Author URI: http://www.smackcoders.com
 *
@@ -27,32 +27,57 @@
 ***********************************************************************************************
 */
 
-define('SMACK_IMAGE_URL', get_bloginfo('wpurl').'/wp-content/plugins/google_seo_autho_snippet_plugin/images/');
+define('SMACK_IMAGE_URL', get_bloginfo('wpurl').'/wp-content/plugins/google-seo-author-snippets-plugin/images/');
 
 $FieldNames[0] = array(
-		'g_image' => 'googleplus_img0.png',
+		'g_image' => 'googleplus-icon-setone.png',
 		'g_image_url' => SMACK_IMAGE_URL,
-		'f_image' => 'facebook_img0.png',
+		'f_image' => 'facebook-icon-setone.png',
 		'f_image_url' => SMACK_IMAGE_URL,
-		't_image' => 'twitter_img0.png',
+		't_image' => 'twitter-icon-setone.png',
 		't_image_url' => SMACK_IMAGE_URL,
-		'l_image' => 'linkedin_img0.png',
+		'l_image' => 'linkedin-icon-setone.png',
 		'l_image_url' => SMACK_IMAGE_URL,
-		'location_image' => 'locator_pink.png',
+		'location_image' => 'locator-icon-setone.png',
 		'location_url' => SMACK_IMAGE_URL,
 	);	
 $FieldNames[1] = array(
-		'g_image' => 'googleplus_img1.png',
+		'g_image' => 'googleplus-icon-settwo.png',
 		'g_image_url' => SMACK_IMAGE_URL,
-		'f_image' => 'facebook_img1.png',
+		'f_image' => 'facebook-icon-settwo.png',
 		'f_image_url' => SMACK_IMAGE_URL,
-		't_image' => 'twitter_img1.png',
+		't_image' => 'twitter-icon-settwo.png',
 		't_image_url' => SMACK_IMAGE_URL,
-		'l_image' => 'linkedin_img1.png',
+		'l_image' => 'linkedin-icon-settwo.png',
 		'l_image_url' => SMACK_IMAGE_URL,
-		'location_image' => 'locator_pink.png',
+		'location_image' => 'locator-icon-settwo.png',
 		'location_url' => SMACK_IMAGE_URL,
 	);	
+$FieldNames[2] = array(
+		'g_image' => 'googleplus-icon-setthree.png',
+		'g_image_url' => SMACK_IMAGE_URL,
+		'f_image' => 'facebook-icon-setthree.png',
+		'f_image_url' => SMACK_IMAGE_URL,
+		't_image' => 'twitter-icon-setthree.png',
+		't_image_url' => SMACK_IMAGE_URL,
+		'l_image' => 'linkedin-icon-setthree.png',
+		'l_image_url' => SMACK_IMAGE_URL,
+		'location_image' => 'locator-icon-setthree.png',
+		'location_url' => SMACK_IMAGE_URL,
+	);	
+$FieldNames[3] = array(
+		'g_image' => 'googleplus-icon-setfour.png',
+		'g_image_url' => SMACK_IMAGE_URL,
+		'f_image' => 'facebook-icon-setfour.png',
+		'f_image_url' => SMACK_IMAGE_URL,
+		't_image' => 'twitter-icon-setfour.png',
+		't_image_url' => SMACK_IMAGE_URL,
+		'l_image' => 'linkedin-icon-setfour.png',
+		'l_image_url' => SMACK_IMAGE_URL,
+		'location_image' => 'locator-icon-setfour.png',
+		'location_url' => SMACK_IMAGE_URL,
+	);	
+
 register_deactivation_hook( __FILE__, 'deactivate_now' );
 function deactivate_now()
 {
@@ -78,5 +103,5 @@ function admin_menus() {
 }  
    add_action("admin_menu", "admin_menus"); 
 
-wp_enqueue_script("microdata_configuration_page", "/wp-content/plugins/google_seo_autho_snippet_plugin/js/smack-microdata.js", array("jquery"));
+wp_enqueue_script("microdata_configuration_page", "/wp-content/plugins/google-seo-author-snippets-plugin/js/smack-microdata.js", array("jquery"));
 ?>
