@@ -2,7 +2,7 @@
 /* Function for plugin configuration */
 function microdata_configuration_page() {  
 global $current_user;
-$config = get_option('smack_microdata_imageset');
+$google_seo_config = get_option('smack_microdata_imageset');
 ?>
 	<div class="wrap" >
 	<!--<div class="icon32" id="icon-schema"><br></div>-->
@@ -37,7 +37,7 @@ $config = get_option('smack_microdata_imageset');
 					<?php 
 					$id=1;	
 					$img_set = get_option('smack_microdata_settings');
-					foreach($config as $array){
+					foreach($google_seo_config as $array){
 						$gimg=$array[g_image_url].$array[g_image];
 						$fimg=$array[f_image_url].$array[f_image];
 						$timg=$array[t_image_url].$array[t_image];
@@ -85,7 +85,7 @@ $config = get_option('smack_microdata_imageset');
 
 if( sizeof($_POST) && isset($_POST["smack_microdata_hidden"]) ) {
 	foreach ($FieldNames as $field=>$value){
-		$config[$field] = $value;
+		$google_seo_config[$field] = $value;
 	}
 	$value = explode('Imageset',$_POST['imageset']);
 	$config_status=2;
