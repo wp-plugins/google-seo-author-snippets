@@ -46,7 +46,7 @@ You can use a existing plugin for now. As we have planned to add this in future 
 Support and Feature requests. 
 ---------------------------- 
 Please visit http://www.smackcoders.com/category/free-wordpress-plugins/google-seo-author-snippet-plugin.html for guides and tutorials. 
-For quick response and reply please create issues in our [support](http://code.smackcoders.com/wptiger/issues) instead of wordpress support forum. Support at wordpress is not possible for now. 
+For quick response and reply please create issues in our [support](http://code.smackcoders.com/seo-author-snippet-wp-plugin/issues) instead of wordpress support forum. Support at wordpress is not possible for now. 
 
 
 == Installation == 
@@ -102,6 +102,6 @@ Configuring our plugin is as simple as that.
    To enable users need to fill their social profile id or leave it empty to disable. 
    Users can use the help note and reference link under each field. 
     
-For quick response and reply please create issues in our [support](http://code.smackcoders.com/wptiger/issues) instead of wordpress support forum.
+For quick response and reply please create issues in our [support](http://code.smackcoders.com/seo-author-snippet-wp-plugin/issues) instead of wordpress support forum.
 
 
