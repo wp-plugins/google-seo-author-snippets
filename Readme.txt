@@ -69,16 +69,18 @@ Google Seo Author Snippet Plugin is very easy to install like any other wordpres
 
 == Changelog == 
 
-1.0.0 		Initial release version. Tested and found works well without any issues. 
+=1.0.1=		Image Conflicts Bug Fixed, Added Extra Social Icon sets.
 
-1.0.1		Image Conflicts Bug Fixed, Added Extra Social Icon sets.
+=1.0.0=		Initial release version. Tested and found works well without any issues. 
+
+
 
 
 == Upgrade Notice == 
+=v 1.0.1=		Bug fix - Image conflicts, Added Extra Social Icon sets.
 
-v1.0.0		Initial release of plugin 
 
-v1.0.1		Bug fix - Image conflicts, Added Extra Social Icon sets.
+=v 1.0.0=		Initial release of plugin 
 
 
 == Frequently Asked Questions == 
