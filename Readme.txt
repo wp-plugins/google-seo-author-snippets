@@ -45,7 +45,8 @@ You can use a existing plugin for now. As we have planned to add this in future 
 
 Support and Feature requests. 
 ---------------------------- 
-Please visit http://www.smackcoders.com/category/free-wordpress-plugins/google-seo-author-snippet-plugin.html for guides and tutorials. Please mail us to wpsupport@smackcoders.com for any timely support or feature request. Support at wordpress is not possible for now. 
+Please visit http://www.smackcoders.com/category/free-wordpress-plugins/google-seo-author-snippet-plugin.html for guides and tutorials. 
+For quick response and reply please create issues in our [support](http://code.smackcoders.com/wptiger/issues) instead of wordpress support forum. Support at wordpress is not possible for now. 
 
 
 == Installation == 
