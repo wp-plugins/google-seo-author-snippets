@@ -101,7 +101,6 @@ Configuring our plugin is as simple as that.
    To enable users need to fill their social profile id or leave it empty to disable. 
    Users can use the help note and reference link under each field. 
     
-
-Please use support section in wordpress itself for any further queries and feature request. 
+For quick response and reply please create issues in our [support](http://code.smackcoders.com/wptiger/issues) instead of wordpress support forum.
 
 
