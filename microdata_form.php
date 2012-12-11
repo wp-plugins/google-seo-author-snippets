@@ -1,4 +1,4 @@
-<?
+<?php
 /* Function for plugin configuration */
 function microdata_configuration_page() {  
 global $current_user;
