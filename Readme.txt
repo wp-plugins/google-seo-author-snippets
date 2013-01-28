@@ -51,12 +51,7 @@ For quick response and reply please create issues in our [support](http://code.s
 
 == Installation == 
 
-Google Seo Author Snippet Plugin is very easy to install like any other wordpress plugin. No need to edit or modify anything here. 
-
-1.    Unzip the file 'google_seo_autho_snippet_plugin.zip'. 
-2.    Upload the ' google_seo_autho_snippet_plugin ' directory to '/wp-content/plugins/' directory using ftp client or upload and install google_seo_autho_snippet_plugin.zip through plugin install wizard in wp admin panel. 
-3.    Activate the plugin through the 'Plugins' menu in WordPress. 
-4.    After activating, you will see an option for 'Google Seo Author Snippet' in the admin menu (left navigation) and you will see an option the Microdata Social profile information and User Geo-Information in user profile settings page. 
+Please click here for [Installation instruction](http://www.smackcoders.com/blog/category/free-wordpress-plugins/google-seo-author-snippet-plugin)
 
 
 == Screenshots == 
@@ -84,25 +79,7 @@ Google Seo Author Snippet Plugin is very easy to install like any other wordpres
 
 
 == Frequently Asked Questions == 
-
-1. How to install the plugin? 
-   Like other plugins google_seo_autho_snippet_plugin is easy to install. Upload the google_seo_autho_snippet_plugin.zip file through plugin install page through wp admin. Everything will work fine with it. 
-
-2. How to configure the plugin? 
-
-  After plugin activation you can see the ' Google Seo Author Snippet Plugin ' menu in admin backend. 
-
-1. By default plugin is enabled on activation 
-2. You can disable on rare cases like for maintenance / testing 
-3. Choose your style of icon set 
-4. Select which social profile to be included 
-5. Save settings  
-
-Configuring our plugin is as simple as that. 
-
-3. How the users configure their social profile? 
-   To enable users need to fill their social profile id or leave it empty to disable. 
-   Users can use the help note and reference link under each field. 
+Please click here for [Detailed FAQ](http://www.smackcoders.com/blog/category/free-wordpress-plugins/google-seo-author-snippet-plugin) 
     
 For quick response and reply please create issues in our [support](http://code.smackcoders.com/seo-author-snippet-wp-plugin/issues) instead of wordpress support forum.
 
