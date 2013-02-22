@@ -266,28 +266,28 @@ function geo_location($lat,$lng){
 
 				if(($get_info['gplus']!=null)&&($get_settings['allowed']['gplus_access']==1))
 				{
-					$author_bio .= '<span><a rel="google_profile" name="google_profile" itemprop="url" href="https://plus.google.com/'. $get_info['gplus'] .'" target="_blank" title="Google Profile"><img src="'.  $gplus_imgsrc. '" width="16" height="16" alt="Google Profile" ></a></span>&nbsp;';
+					$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="google_profile" name="google_profile" itemprop="url" href="https://plus.google.com/'. $get_info['gplus'] .'" target="_blank" title="Google Profile"><img src="'.  $gplus_imgsrc. '" width="16" height="16" alt="Google Profile" /></a></span>';
 				}
 
 				if(($get_info['fbook']!=null)&&($get_settings['allowed']['fbook_access']==1))
 				{
-					$author_bio .= '<span><a rel="facebook_profile" name="facebook_profile" itemprop="url" href="https://facebook.com/'. $get_info['fbook']. '" target="_blank" title="Facebook"><img src="'. $fbook_imgsrc .'" width="16" height="16" alt="Facebook" /></a></span>&nbsp;';
+					$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="facebook_profile" name="facebook_profile" itemprop="url" href="https://facebook.com/'. $get_info['fbook']. '" target="_blank" title="Facebook"><img src="'. $fbook_imgsrc .'" width="16" height="16" alt="Facebook" /></a></span>';
 				}
 	
 				if(($get_info['twit']!=null)&&($get_settings['allowed']['twit_access']==1))
 				{
-					$author_bio .= '<span><a rel="twitter_profile" name="twitter_profile" itemprop="url" href="https://twitter.com/'. $get_info['twit']. '" target="_blank" title="Follow Me on Twitter!"><img src="'. $twit_imgsrc .'" width="16" height="16" alt="Follow Me on Twitter!" /></a></span>&nbsp;';
+					$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="twitter_profile" name="twitter_profile" itemprop="url" href="https://twitter.com/'. $get_info['twit']. '" target="_blank" title="Follow Me on Twitter!"><img src="'. $twit_imgsrc .'" width="16" height="16" alt="Follow Me on Twitter!" /></a></span>';
 				}
 	
 				if(($get_info['linkin']!=null)&&($get_settings['allowed']['linkin_access']==1))
 				{
-					$author_bio .= '<span><a rel="linkedin_profile" name="linkedin_profile" itemprop="url" href="http://in.linkedin.com/'. $get_info['linkin'] .'" target="_blank" title="LinkedIn"><img src="'. $linkin_imgsrc .'" width="16" height="16" alt="LinkedIn" /></a></span>&nbsp;';
+					$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="linkedin_profile" name="linkedin_profile" itemprop="url" href="http://in.linkedin.com/'. $get_info['linkin'] .'" target="_blank" title="LinkedIn"><img src="'. $linkin_imgsrc .'" width="16" height="16" alt="LinkedIn" /></a></span>';
 				}
 				if(($get_info['latitude']!=null) && ($get_info['longitude']!=null)&&($get_settings['allowed']['location_access']==1)){
-				$author_bio .= '<span><a rel="user_location" name="user_location" itemprop="url" href="" title="'.$location.'"><img src="'. $location_imgsrc .'" width="16" height="16" alt="Location" /></a></span>&nbsp;';			
+				$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="user_location" name="user_location" itemprop="url" href="" title="'.$location.'"><img src="'. $location_imgsrc .'" width="13" height="16" alt="Location" /></a></span>';			
 				}
-				$author_bio .= '<span><a rel="updated" class="updated" name="comment_author" href="" title="author" style="display:none;">'.get_post_time('F jS, Y g:i a').'</a><a rel="author" name="comment_author" itemprop="name" href="" title="author">'.$author.'</a></span></span>';
-				return "<a id='post_author' class='fn' itemprop='name' title='View all posts by ".$author."'>".$author."</a>&nbsp;".$author_bio;
+				$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="updated" class="updated" name="comment_author" href="" title="author" style="display:none;">'.get_post_time('F jS, Y g:i a').'</a><a rel="author" name="comment_author" itemprop="name" href="" title="author">'.$author.'</a></span></span>';
+				return "<a id='post_author' class='fn' itemprop='name' title='View all posts by ".$author."'>".$author."</a>".$author_bio;
 			}
 
 			# Code added for verifying author name in backend
@@ -328,19 +328,19 @@ add_filter('comments_array','smack_custom_comments_list');
 		$location_imgsrc=$array[$get_settings['imageset']]['location_url'].$array[$get_settings['imageset']]['location_image'];
 		$author_bio = '<span itemscope="itemscope" itemtype="http://schema.org/Person"> ';
 		if(($gplus_profile!=null)&&($get_settings['allowed']['gplus_access']==1)){
-		$author_bio .= '<span><a rel="google_profile" name="google_profile" itemprop="url" href="https://plus.google.com/'. $gplus_profile .'" target="_blank" title="Google Profile"><img src="'.  $gplus_imgsrc. '" width="16" height="16" alt="Google Profile" ></a></span>&nbsp;';
+		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="google_profile" name="google_profile" itemprop="url" href="https://plus.google.com/'. $gplus_profile .'" target="_blank" title="Google Profile"><img src="'.  $gplus_imgsrc. '" width="16" height="16" alt="Google Profile" /></a></span>';
 		}
 		if(($fbook_profile!=null)&&($get_settings['allowed']['fbook_access']==1)){
-		$author_bio .= '<span><a rel="facebook_profile" name="facebook_profile" itemprop="url" href="https://facebook.com/'. $fbook_profile. '" target="_blank" title="Facebook"><img src="'. $fbook_imgsrc .'" width="16" height="16" alt="Facebook" /></a></span>&nbsp;';
+		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="facebook_profile" name="facebook_profile" itemprop="url" href="https://facebook.com/'. $fbook_profile. '" target="_blank" title="Facebook"><img src="'. $fbook_imgsrc .'" width="16" height="16" alt="Facebook" /></a></span>';
 		}
 		if(($twit_profile!=null)&&($get_settings['allowed']['twit_access']==1)){
-		$author_bio .= '<span><a rel="twitter_profile" name="twitter_profile" itemprop="url" href="https://twitter.com/'. $twit_profile. '" target="_blank" title="Follow Me on Twitter!"><img src="'. $twit_imgsrc .'" width="16" height="16" alt="Follow Me on Twitter!" /></a></span>&nbsp;';
+		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="twitter_profile" name="twitter_profile" itemprop="url" href="https://twitter.com/'. $twit_profile. '" target="_blank" title="Follow Me on Twitter!"><img src="'. $twit_imgsrc .'" width="16" height="16" alt="Follow Me on Twitter!" /></a></span>';
 		}
 		if(($linkin_profile!=null)&&($get_settings['allowed']['linkin_access']==1)){
-		$author_bio .= '<span><a rel="linkedin_profile" name="linkedin_profile" itemprop="url" href="http://in.linkedin.com/'. $linkin_profile .'" target="_blank" title="LinkedIn"><img src="'. $linkin_imgsrc .'" width="16" height="16" alt="LinkedIn" /></a></span>&nbsp;';
+		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="linkedin_profile" name="linkedin_profile" itemprop="url" href="http://in.linkedin.com/'. $linkin_profile .'" target="_blank" title="LinkedIn"><img src="'. $linkin_imgsrc .'" width="16" height="16" alt="LinkedIn" /></a></span>';
 		}
 		if(($get_info[0]['latitude']!=null) && ($get_info[0]['longitude']!=null)&&($get_settings['allowed']['location_access']==1)){
-		$author_bio .= '<span><a rel="user_location" name="user_location" itemprop="url" href="" title="'.$location.'"><img src="'. $location_imgsrc .'" width="16" height="16" alt="Location" /></a></span>&nbsp;';			
+		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="user_location" name="user_location" itemprop="url" href="" title="'.$location.'"><img src="'. $location_imgsrc .'" width="13" height="16" alt="Location" /></a></span>';			
 		}
 		$author_bio .= '<span style="display:none;"><a rel="author" name="comment_author" itemprop="name" href="" title="author">'.$comment->comment_author.'</a></span></span>';
 		$comment->comment_author=$comment->comment_author." ".$author_bio;

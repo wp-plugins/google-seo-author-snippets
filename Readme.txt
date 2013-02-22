@@ -4,7 +4,7 @@ Donate link: http://www.smackcoders.com/donate.html
 Tags: google, plugin, admin, comments, twitter, links, author, custom, dashboard, facebook,  
 Requires at least: 3.4 
 Tested up to: 3.4.2 
-Stable tag: 1.0.1 
+Stable tag: 1.1.0
 Author: Smackcoders
 Author URI: http://profiles.wordpress.org/smackcoders/
 License: GPLv2 or later
@@ -64,6 +64,8 @@ Please click here for [Installation instruction](http://www.smackcoders.com/blog
 
 == Changelog == 
 
+=1.1.0=		Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
+
 =1.0.1=		Image Conflicts Bug Fixed, Added Extra Social Icon sets.
 
 =1.0.0=		Initial release version. Tested and found works well without any issues. 
@@ -72,6 +74,10 @@ Please click here for [Installation instruction](http://www.smackcoders.com/blog
 
 
 == Upgrade Notice == 
+
+=v 1.1.0=		Bug fix - Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
+
+
 =v 1.0.1=		Bug fix - Image conflicts, Added Extra Social Icon sets.
 
 
