@@ -46,7 +46,7 @@ You can use a existing plugin for now. As we have planned to add this in future 
 Support and Feature requests. 
 ---------------------------- 
 Please visit http://www.smackcoders.com/category/free-wordpress-plugins/google-seo-author-snippet-plugin.html for guides and tutorials. 
-For quick response and reply please create issues in our [support](http://code.smackcoders.com/seo-author-snippet-wp-plugin/issues) instead of wordpress support forum. Support at wordpress is not possible for now. 
+For quick response and reply please create issues in our [support](http://forge.smackcoders.com/projects/google-seo-author-snippets/issues) instead of WordPress support forum. Support at WordPress is not possible for now. 
 
 
 == Installation == 
@@ -87,6 +87,6 @@ Please click here for [Installation instruction](http://www.smackcoders.com/blog
 == Frequently Asked Questions == 
 Please click here for [Detailed FAQ](http://www.smackcoders.com/blog/category/free-wordpress-plugins/google-seo-author-snippet-plugin) 
     
-For quick response and reply please create issues in our [support](http://code.smackcoders.com/seo-author-snippet-wp-plugin/issues) instead of wordpress support forum.
+For quick response and reply please create issues in our [support](http://forge.smackcoders.com/projects/google-seo-author-snippets/issues) instead of WordPress support forum.
 
 
