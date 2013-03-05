@@ -1,14 +1,15 @@
 <?php 
 /*
-*Plugin Name: Google Seo Author Snippet Plugin
+*Plugin Name: Google SEO Author Snippet Plugin
 *Plugin URI: http://www.smackcoders.com/google-seo-author-snippet-wordpress-plugin.html
 *Description: A plugin that Manages the user's social profile details
 *Version: 1.1.0
 *Author: smackcoders.com
 *Author URI: http://www.smackcoders.com
 *
-* Copyright (C) 2012 Fredrick SujinDoss.M (email : fredrickm@smackcoders.com)
+* Copyright (C) 2012 Smackcoders (www.smackcoders.com)
 *
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
     published by the Free Software Foundation.
@@ -96,10 +97,11 @@ class MyPlugin {
 }
 register_activation_hook( __FILE__, array('MyPlugin', 'install') );
 update_option( 'smack_microdata_imageset' , $FieldNames );
+
 require_once 'microdata_form.php';
 function admin_menus() {  
 	$contentUrl = WP_CONTENT_URL; 
-	add_menu_page('Plugin settings', 'Google Seo Author Snippet', 'manage_options',  
+	add_menu_page('Plugin settings', 'Google SEO Author Snippet', 'manage_options',  
 	       'plugin_configuration', 'microdata_configuration_page', "$contentUrl/plugins/google-seo-author-snippets/images/icon.png");
 }  
    add_action("admin_menu", "admin_menus"); 

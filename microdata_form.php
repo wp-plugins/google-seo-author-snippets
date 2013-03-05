@@ -7,9 +7,9 @@ $google_seo_config = get_option('smack_microdata_imageset');
 	<div class="wrap" >
 	<!--<div class="icon32" id="icon-schema"><br></div>-->
 	<div style="background-color: #FFFFE0;border-color: #E6DB55;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 5px 15px 2px;
-    padding: 5px;text-align:center"> Please check out <a href="http://smackcoders.com/category/free-wordpress-plugins/google-seo-author-snippet-plugin.html" target="_blank">www.smackcoders.com</a> for the latest news and details of other great plugins and tools. </div>
+    padding: 5px;text-align:center"> Please check out <a href="http://www.smackcoders.com/blog/category/free-wordpress-plugins/google-seo-author-snippet-plugin" target="_blank">www.smackcoders.com</a> for the latest news and details of other great plugins and tools. </div>
 	<div style="width:50%;float:left;margin-top:30px;">
-		<h2>Google Seo Author Snippet Settings</h2><br/>
+		<h2>Google SEO Author Snippet Settings</h2><br/>
 		<form id="smack_microdata_form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 			<div class="smack_schema_options">
 				<?php
@@ -17,7 +17,7 @@ $google_seo_config = get_option('smack_microdata_imageset');
 				?>
 				<div class="smack_schema_form_options">
 					<input type="radio" id="enable" name="option" value="enable"  onclick="enable_imageset();" checked="checked" />&nbsp;Enable &nbsp; &nbsp; &nbsp;
-					<input type="radio" id="disable" name="option" value="disable"  onclick="disable_imageset();" <?php if($status['config_status'] == 2){ ?> checked <?php } ?> />&nbsp;Disable (on rare cases)
+					<input type="radio" id="disable" name="option" value="disable"  onclick="disable_imageset();" <?php if($status['config_status'] == 2){ ?> checked <?php } ?> />&nbsp;Disable
 				</div>
 		    	</div>  <br/>
 			<div id="smack-container"  <?php if($status['config_status'] == 2){ ?> style="display:none" <?php } ?> >
@@ -25,11 +25,11 @@ $google_seo_config = get_option('smack_microdata_imageset');
 				<input type="hidden" name="smack_microdata_hidden" value="1" />
 				<h2>Enable / Disable Social Profiles</h2><br/>
 				<div class="smack_schema_form_options">
-					<input type="checkbox" id="googleplus" name="googleplus" <?php if($status['allowed']['gplus_access']==1){ ?> checked <?php } ?> />&nbsp;Goolge+ &nbsp; &nbsp; &nbsp;				
+					<input type="checkbox" id="googleplus" name="googleplus" <?php if($status['allowed']['gplus_access']==1){ ?> checked <?php } ?> />&nbsp;Google+ &nbsp; &nbsp; &nbsp;				
 					<input type="checkbox" id="facebook" name="facebook"  <?php if($status['allowed']['fbook_access']==1){ ?> checked <?php } ?>  />&nbsp;Facebook &nbsp; &nbsp; &nbsp;
 					<input type="checkbox" id="twitter" name="twitter"  <?php if($status['allowed']['twit_access']==1){ ?> checked <?php } ?>  />&nbsp;Twitter &nbsp; &nbsp; &nbsp;
 					<input type="checkbox" id="linkedin" name="linkedin"  <?php if($status['allowed']['linkin_access']==1){ ?> checked <?php } ?>  />&nbsp;Linkedin &nbsp; &nbsp; &nbsp;
-					<input type="checkbox" id="location" name="location"  <?php if($status['allowed']['location_access']==1){ ?> checked <?php } ?>  />&nbsp;Location &nbsp; &nbsp; &nbsp;
+					<input type="checkbox" id="location" name="location"  <?php if($status['allowed']['location_access']==1){ ?> checked <?php } ?>  />&nbsp;Geo-Location &nbsp; &nbsp; &nbsp;
 				</div><br/>
 
 				<h3>Select the icon style</h3><br/>
@@ -65,14 +65,14 @@ $google_seo_config = get_option('smack_microdata_imageset');
 	</div>
         </div>  
     	<div class="smack_schema_form_text" style="width:45%;float:right;margin-top:30px;margin-right:40px;">
-	    	<p>Google Seo Author Snippet Plugin gives you both seo and social advantage.</p> 
+	    	<p>Google SEO Author Snippet Plugin gives you both SEO and social advantage.</p> 
 			<p>1. By default plugin is enabled on activation</p>
 			<p>2. You can disable on rare cases like for maintenance / testing</p>
 			<p>3. Choose your style of icon set</p>
 			<p>4. Select which social profile to be included</p>
 			<p>5. Save settings.</p>
 		</p> 
-		<p>Configuring our plugin is as simple as that. If you have any questions, issues and request on new features, plaese visit<a href="http://www.smackcoders.com/category/free-wordpress-plugins/google-seo-author-snippet-plugin.html" target="_blank">&nbsp;Smackcoders.com Blog </a></p>
+		<p>Configuring our plugin is as simple as that. If you have any questions, issues and request on new features, plaese visit<a href="http://www.smackcoders.com/google-seo-author-snippet.html" target="_blank">&nbsp;Smackcoders.com </a></p>
 
 
 	<div align="center" style="margin-top:40px;"> "While the scripts on this site are free, donations are greatly appreciated. "<br/><br/><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fenzik@gmail.com&lc=JP&item_name=WordPress%20Plugins&item_number=wp%2dplugins&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" target="_blank"><img src="<?php echo SMACK_IMAGE_URL ; ?>./paypal_donate_button.png" /></a><br/><br/><a href="http://www.smackcoders.com/" target="_blank"><img src="http://www.smackcoders.com/wp-content/uploads/2012/09/Smack_poweredby_200.png"></a></div>
@@ -119,7 +119,6 @@ if( sizeof($_POST) && isset($_POST["smack_microdata_hidden"]) ) {
 }
 
 /* Form for maintain the social profile links */
-
 $get = get_option('smack_microdata_settings');
 if($get['config_status']==1){
 	add_action( 'show_user_profile', 'yoursite_extra_user_profile_fields' );
@@ -224,20 +223,18 @@ if($get['config_status']==1){
 	}
 
 /* Function for getting user location */
+	function geo_location($lat,$lng){
+		$address_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lat . ',' . $lng . '&sensor=false';
+		$address_json = json_decode(file_get_contents($address_url));
+		$address_data = $address_json->results[1]->address_components;
+		$city = $address_data[1]->long_name;
+		$state = $address_data[2]->long_name;
+		$country = $address_data[3]->long_name;
+		$geoinfo = array('city' => $city, 'state' => $state, 'country' => $country);
+		return $geoinfo;
+	}
 
-function geo_location($lat,$lng){
-	$address_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lat . ',' . $lng . '&sensor=false';
-	$address_json = json_decode(file_get_contents($address_url));
-	$address_data = $address_json->results[1]->address_components;
-	$city = $address_data[1]->long_name;
-	$state = $address_data[2]->long_name;
-	$country = $address_data[3]->long_name;
-	$geoinfo = array('city' => $city, 'state' => $state, 'country' => $country);
-	return $geoinfo;
-}
-
-/* Function to show social profile links in Posts  */
-
+	/* Function to show social profile links in Posts  */
 	$get_settings = get_option('smack_microdata_settings');
 	if($get_settings['config_status']==1){
 
@@ -273,81 +270,76 @@ function geo_location($lat,$lng){
 				{
 					$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="facebook_profile" name="facebook_profile" itemprop="url" href="https://facebook.com/'. $get_info['fbook']. '" target="_blank" title="Facebook"><img src="'. $fbook_imgsrc .'" width="16" height="16" alt="Facebook" /></a></span>';
 				}
-	
+
 				if(($get_info['twit']!=null)&&($get_settings['allowed']['twit_access']==1))
 				{
 					$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="twitter_profile" name="twitter_profile" itemprop="url" href="https://twitter.com/'. $get_info['twit']. '" target="_blank" title="Follow Me on Twitter!"><img src="'. $twit_imgsrc .'" width="16" height="16" alt="Follow Me on Twitter!" /></a></span>';
 				}
-	
+
 				if(($get_info['linkin']!=null)&&($get_settings['allowed']['linkin_access']==1))
 				{
 					$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="linkedin_profile" name="linkedin_profile" itemprop="url" href="http://in.linkedin.com/'. $get_info['linkin'] .'" target="_blank" title="LinkedIn"><img src="'. $linkin_imgsrc .'" width="16" height="16" alt="LinkedIn" /></a></span>';
 				}
 				if(($get_info['latitude']!=null) && ($get_info['longitude']!=null)&&($get_settings['allowed']['location_access']==1)){
-				$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="user_location" name="user_location" itemprop="url" href="" title="'.$location.'"><img src="'. $location_imgsrc .'" width="13" height="16" alt="Location" /></a></span>';			
+					$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="user_location" name="user_location" itemprop="url" href="" title="'.$location.'"><img src="'. $location_imgsrc .'" width="13" height="16" alt="Location" /></a></span>';			
 				}
 				$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="updated" class="updated" name="comment_author" href="" title="author" style="display:none;">'.get_post_time('F jS, Y g:i a').'</a><a rel="author" name="comment_author" itemprop="name" href="" title="author">'.$author.'</a></span></span>';
 				return "<a id='post_author' class='fn' itemprop='name' title='View all posts by ".$author."'>".$author."</a>".$author_bio;
 			}
 
-			# Code added for verifying author name in backend
+# Code added for verifying author name in backend
 			$get_cookiename = "wordpress_".md5(get_site_option( 'siteurl' ));
 			if(!isset($_COOKIE[$get_cookiename])) # Check wheather user in frontend or backend.
 			{
 				add_filter( 'the_author', 'author_bios' );
 			}
-			#Code ends here	
 		}
 	}
 
-/* Function to show social profile links in Comments  */
-
-add_filter('comments_array','smack_custom_comments_list');
-
+	/* Function to show social profile links in Comments  */
+	add_filter('comments_array','smack_custom_comments_list');
 
 	function smack_custom_comments_list($comments){
-	    foreach($comments as $comment){
-		$get_info = get_user_meta( $comment->user_id, 'smack_social_links' );
-		$gplus_profile = $get_info[0]['gplus'];
-		$fbook_profile = $get_info[0]['fbook'];
-		$twit_profile = $get_info[0]['twit'];
-		$linkin_profile = $get_info[0]['linkin'];
-		$get_imageset = get_option('smack_microdata_imageset');
-		$get_settings = get_option('smack_microdata_settings');
-		$count =1;
-		foreach($get_imageset as $img_set){
-			$array[$count]=$img_set;
-			$count++;
+		foreach($comments as $comment){
+			$get_info = get_user_meta( $comment->user_id, 'smack_social_links' );
+			$gplus_profile = $get_info[0]['gplus'];
+			$fbook_profile = $get_info[0]['fbook'];
+			$twit_profile = $get_info[0]['twit'];
+			$linkin_profile = $get_info[0]['linkin'];
+			$get_imageset = get_option('smack_microdata_imageset');
+			$get_settings = get_option('smack_microdata_settings');
+			$count =1;
+			foreach($get_imageset as $img_set){
+				$array[$count]=$img_set;
+				$count++;
+			}
+			$result=geo_location($get_info[0]['latitude'],$get_info[0]['longitude']);
+			$location = $result['city'].",".$result['state'].",".$result['country'];
+			$gplus_imgsrc=$array[$get_settings['imageset']]['g_image_url'].$array[$get_settings['imageset']]['g_image'];
+			$fbook_imgsrc=$array[$get_settings['imageset']]['f_image_url'].$array[$get_settings['imageset']]['f_image'];
+			$twit_imgsrc=$array[$get_settings['imageset']]['t_image_url'].$array[$get_settings['imageset']]['t_image'];
+			$linkin_imgsrc=$array[$get_settings['imageset']]['l_image_url'].$array[$get_settings['imageset']]['l_image'];
+			$location_imgsrc=$array[$get_settings['imageset']]['location_url'].$array[$get_settings['imageset']]['location_image'];
+			$author_bio = '<span itemscope="itemscope" itemtype="http://schema.org/Person"> ';
+			if(($gplus_profile!=null)&&($get_settings['allowed']['gplus_access']==1)){
+				$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="google_profile" name="google_profile" itemprop="url" href="https://plus.google.com/'. $gplus_profile .'" target="_blank" title="Google Profile"><img src="'.  $gplus_imgsrc. '" width="16" height="16" alt="Google Profile" /></a></span>';
+			}
+			if(($fbook_profile!=null)&&($get_settings['allowed']['fbook_access']==1)){
+				$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="facebook_profile" name="facebook_profile" itemprop="url" href="https://facebook.com/'. $fbook_profile. '" target="_blank" title="Facebook"><img src="'. $fbook_imgsrc .'" width="16" height="16" alt="Facebook" /></a></span>';
+			}
+			if(($twit_profile!=null)&&($get_settings['allowed']['twit_access']==1)){
+				$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="twitter_profile" name="twitter_profile" itemprop="url" href="https://twitter.com/'. $twit_profile. '" target="_blank" title="Follow Me on Twitter!"><img src="'. $twit_imgsrc .'" width="16" height="16" alt="Follow Me on Twitter!" /></a></span>';
+			}
+			if(($linkin_profile!=null)&&($get_settings['allowed']['linkin_access']==1)){
+				$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="linkedin_profile" name="linkedin_profile" itemprop="url" href="http://in.linkedin.com/'. $linkin_profile .'" target="_blank" title="LinkedIn"><img src="'. $linkin_imgsrc .'" width="16" height="16" alt="LinkedIn" /></a></span>';
+			}
+			if(($get_info[0]['latitude']!=null) && ($get_info[0]['longitude']!=null)&&($get_settings['allowed']['location_access']==1)){
+				$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="user_location" name="user_location" itemprop="url" href="" title="'.$location.'"><img src="'. $location_imgsrc .'" width="13" height="16" alt="Location" /></a></span>';			
+			}
+			$author_bio .= '<span style="display:none;"><a rel="author" name="comment_author" itemprop="name" href="" title="author">'.$comment->comment_author.'</a></span></span>';
+			$comment->comment_author=$comment->comment_author." ".$author_bio;
 		}
-		$result=geo_location($get_info[0]['latitude'],$get_info[0]['longitude']);
-		$location = $result['city'].",".$result['state'].",".$result['country'];
-		$gplus_imgsrc=$array[$get_settings['imageset']]['g_image_url'].$array[$get_settings['imageset']]['g_image'];
-		$fbook_imgsrc=$array[$get_settings['imageset']]['f_image_url'].$array[$get_settings['imageset']]['f_image'];
-		$twit_imgsrc=$array[$get_settings['imageset']]['t_image_url'].$array[$get_settings['imageset']]['t_image'];
-		$linkin_imgsrc=$array[$get_settings['imageset']]['l_image_url'].$array[$get_settings['imageset']]['l_image'];
-		$location_imgsrc=$array[$get_settings['imageset']]['location_url'].$array[$get_settings['imageset']]['location_image'];
-		$author_bio = '<span itemscope="itemscope" itemtype="http://schema.org/Person"> ';
-		if(($gplus_profile!=null)&&($get_settings['allowed']['gplus_access']==1)){
-		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="google_profile" name="google_profile" itemprop="url" href="https://plus.google.com/'. $gplus_profile .'" target="_blank" title="Google Profile"><img src="'.  $gplus_imgsrc. '" width="16" height="16" alt="Google Profile" /></a></span>';
-		}
-		if(($fbook_profile!=null)&&($get_settings['allowed']['fbook_access']==1)){
-		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="facebook_profile" name="facebook_profile" itemprop="url" href="https://facebook.com/'. $fbook_profile. '" target="_blank" title="Facebook"><img src="'. $fbook_imgsrc .'" width="16" height="16" alt="Facebook" /></a></span>';
-		}
-		if(($twit_profile!=null)&&($get_settings['allowed']['twit_access']==1)){
-		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="twitter_profile" name="twitter_profile" itemprop="url" href="https://twitter.com/'. $twit_profile. '" target="_blank" title="Follow Me on Twitter!"><img src="'. $twit_imgsrc .'" width="16" height="16" alt="Follow Me on Twitter!" /></a></span>';
-		}
-		if(($linkin_profile!=null)&&($get_settings['allowed']['linkin_access']==1)){
-		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="linkedin_profile" name="linkedin_profile" itemprop="url" href="http://in.linkedin.com/'. $linkin_profile .'" target="_blank" title="LinkedIn"><img src="'. $linkin_imgsrc .'" width="16" height="16" alt="LinkedIn" /></a></span>';
-		}
-		if(($get_info[0]['latitude']!=null) && ($get_info[0]['longitude']!=null)&&($get_settings['allowed']['location_access']==1)){
-		$author_bio .= '<span style="padding-left:2px;padding-right:2px;" ><a rel="user_location" name="user_location" itemprop="url" href="" title="'.$location.'"><img src="'. $location_imgsrc .'" width="13" height="16" alt="Location" /></a></span>';			
-		}
-		$author_bio .= '<span style="display:none;"><a rel="author" name="comment_author" itemprop="name" href="" title="author">'.$comment->comment_author.'</a></span></span>';
-		$comment->comment_author=$comment->comment_author." ".$author_bio;
-	    }
-	    return $comments;
-
+		return $comments;
 	}
 }
-
 ?>
