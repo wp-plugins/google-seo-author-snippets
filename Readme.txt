@@ -1,11 +1,11 @@
 === Google SEO Author Snippet Plugin === 
-Contributors: Smackcoders 
+Contributors: smackcoders 
 Donate link: http://www.smackcoders.com/donate.html
 Tags: Google, plugin, admin, comments, twitter, links, author, custom, dashboard, facebook,  
 Requires at least: 3.4 
 Tested up to: 3.5 
 Stable tag: 1.5.0
-Author: Smackcoders
+Author: smackcoders
 Author URI: http://profiles.wordpress.org/smackcoders/
 License: GPLv2 or later
 
