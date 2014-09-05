@@ -2,8 +2,8 @@
 Contributors: smackcoders 
 Donate link: http://www.smackcoders.com/donate.html
 Tags: Google, plugin, admin, comments, twitter, links, author, custom, dashboard, facebook,  
-Requires at least: 3.4 
-Tested up to: 3.5 
+Requires at least: 3.8 
+Tested up to: 4.0
 Stable tag: 1.5.0
 Author: smackcoders
 Author URI: http://profiles.wordpress.org/smackcoders/
