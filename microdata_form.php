@@ -1,16 +1,27 @@
 <?php
-/* Function for plugin configuration */
+/* Function for plugin configuratnion */
 function microdata_configuration_page() {  
 global $current_user;
+global $wpdb;
+//$post_var=get_option('post_check');
+//echo '<pre>'; print_r($post_var); die;
+//$post_var = get_option('auto');
+//  foreach($post_var as $key => $value) { echo '<pre>'; print_r($value); } die;
+if(isset($_POST['save_seo_settings']) && $_POST['save_seo_settings'] == 'Save Settings') {
+	update_option('post_check',$_POST['snippets']);
+	update_option('auto',$_POST['auto']);
+	update_option('snippet_settings',$_POST['snippets_type']);
+}
 $google_seo_config = get_option('smack_microdata_imageset');
 ?>
 	<div class="wrap" >
 	<!--<div class="icon32" id="icon-schema"><br></div>-->
 	<div style="background-color: #FFFFE0;border-color: #E6DB55;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 5px 15px 2px;
     padding: 5px;text-align:center"> Please check out <a href="http://www.smackcoders.com/blog/category/free-wordpress-plugins/google-seo-author-snippet-plugin" target="_blank">www.smackcoders.com</a> for the latest news and details of other great plugins and tools. </div>
-	<div style="width:50%;float:left;margin-top:30px;">
-		<h2>Google SEO Author Snippet Settings</h2><br/>
-		<form id="smack_microdata_form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+	<div style="width:90%; float:left;margin-top:30px;">
+		<h3>Google SEO Pressor Rich Snippets</h3><br/>
+                  <div id = "showdanger"></div>
+		<form id="smack_microdata_form" name="smack_microdata_form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 			<div class="smack_schema_options">
 				<?php
 					$status = get_option('smack_microdata_settings');
@@ -20,15 +31,111 @@ $google_seo_config = get_option('smack_microdata_imageset');
 					<input type="radio" id="disable" name="option" value="disable"  onclick="disable_imageset();" <?php if($status['config_status'] == 2){ ?> checked <?php } ?> />&nbsp;Disable
 				</div>
 		    	</div>  <br/>
+                        
 			<div id="smack-container"  <?php if($status['config_status'] == 2){ ?> style="display:none" <?php } ?> >
+                                <div>
+                                 <h3> <?php _e('Available Post Types') ?>  </h3>
+					<input type="radio" id="post_type" name="type" value="Posts"  onclick="choose_snippets(this.id);"  checked />&nbsp;<?php  _e('Post Types')  ?> &nbsp; &nbsp; &nbsp;
+                 <!--	                       <input type="radio" id="taxo_type" name = "type" value="Categories & Taxonomies" onclick = "choose_snippets(this.id);"/>&nbsp;Categories &amp; Taxonomies  &nbsp; &nbsp; &nbsp; -->
+                                  </div>
+                                <div id = "disp_posttype" style = "display:block";>
+                              <table>  
+                                 <tr> 
+                                     <th> <?php _e('Post types')?> </th>
+                                     <th> <?php _e('Rich snippets') ?></th>
+                                     <th> <?php _e('Manual/Auto')?></th> 
+                                     <th> <?php _e('Twitter Cards') ?> </th> 
+                                     <th> <?php _e('Based On Post Format') ?> </th>
+                                 </tr>
+                                 <?php foreach(get_post_types() as $post_types => $value1 ){ 
+                                if (($value1 != 'featured_image') && ($value1 != 'attachment') && ($value1 != 'wpsc-product') && ($value1 != 'wpsc-product-file') && ($value1 != 'revision') && ($value1 != 'nav_menu_item')&& ($value1 != 'wp-types-group') && ($value1 != 'wp-types-user-group') &&  ($value1 != 'product_variation') && ($value1 != 'shop_order') && ($value1 != 'shop_coupon') && ($value1 != 'acf') && ($value1 != 'createdByCCTM') && ($value1 != 'createdByTypes')) { ?>                             
+                                <tr>
+                                    <td>  
+                                  <?php  $get_option = get_option('post_check'); ?>
+                                  <input type = "checkbox" name = "snippets[<?php _e($value1) ?>]" id = "<?php _e($value1) ?>" <?php foreach($get_option as $post_types=> $val) { if( ($post_types == $value1 ) && ( $val == 'on')) { ?> checked <? } } ?>  /> <?php _e($value1) ?> 
+                                  </td>
+                                  <td>
+                                   <?php $snippets = get_option('snippets_types'); ?>
+                              <select name = "snippets_type[<?php echo $value1; ?>]" id = "<?php _e($value1) ?>" >
+				<option value = "<?php _e('--select--')?>" > <?php _e('--select--') ?> </option>
+                                <?php 
+					$snippet_settings = get_option('snippet_settings');
+	                                foreach($snippets as $key ) { ?>  
+                                   <?php 
+					if( trim($key) == trim($snippet_settings[$value1]) ) { ?>
+		                              <option value = "<?php echo $key; ?>" selected="selected"> <?php echo $key; ?> </option>
+                	               <?php } else { ?>
+					      <option value = "<?php echo $key; ?>" > <?php echo $key; ?> </option>
+				       <?php } 
+				      } 
+				   ?>
+                             </select>
+                                  </td>
+                                  <td>
+                                     <label style = 'padding-left:40%;'> <input type ="checkbox" name = "auto[<?php echo $value1;?>]" id = "<?php echo$value1;?>" onclick = 'auto(this.id);' <?php foreach(get_option('auto') as $sauto => $autoval) { if(($sauto == $value1 ) && ($autoval == 'on')) { ?> checked <?php }} ?> />  </label>
+                                   
+                                  </td>
+                                  <td>
+                                     <label style = 'padding-left:40%;'> <input type ="checkbox" name = "<?php _e($value1.'twit') ?>" id = "<?php _e($value1.'twit')?> " onclick = 'twit(this.id);' >  </label>
+                                  </td> 
+                                  <td>
+                                     <label style = 'padding-left:40%;'> <input type ="checkbox" name = "<?php _e($value1.'pformat') ?>" id ="<?php _e($value1.'pformat') ?>"  onclick = 'post_format(this.id);' /> </label>
+                                  </td>
+                                  </td>
+                                   </tr> 
+                                  <?php    } } ?>
+                                </table>
+                                </div>
+                            <!--    <div id = "disp_categories" style = "display:none">
+                                  <table>  <tr> <th  > Categories  </th>
+                              <th> Rich snippets  </th> </tr>
+                                 
+                                   
+                                   <?php foreach(get_categories() as $cat ){ 
+                                       ?>
+                                    <tr><td>  
+                                    <input type = "checkbox" name = "snippets" id = "<?php// echo $cat->cat_name ?>" /> <?php// echo $cat->cat_name ?> 
+                                   </td>
+                                   
+                                       <td>
+                                           <?php $snippets = get_option('snippets_types'); ?>
+                                          <select> <?php foreach($snippets as $key ) { ?>  <option value = '<?php //echo $key ?>'/ > <?php// echo $key ?>  </option>  <?php } ?></select>
+                                       </td>
+                                   </tr> 
+                                  
+                                 <?php    }  ?>
+                                
+                                </table>
+                                  <table>  <tr> <th  >  Taxonomies </th>
+                              <th> Rich snippets  </th> </tr>
+                                 
+                                   
+                                   <?php foreach(get_taxonomies('','names') as $taxo ){ 
+                                       ?>
+                                   <tr><td> 
+                                    <?php  if (($taxo != 'category') && ($taxo != 'post_tag') && ($taxo != 'nav_menu') && ($taxo != 'link_category') && ($taxo != '') && ($taxo != 'post_format')) { ?>  
+                                    <input type = "checkbox" name = "snippets" id = "<?php// echo $taxo ?>" /> <?php// echo $taxo ?> 
+                                   </td>
+                                   
+                                       <td>
+                                           <?php $snippets = get_option('snippets_types'); ?>
+                                          <select> <?php foreach($snippets as $key ) { ?>  <option value = '<?php// echo $key ?>'/ > <?php// echo $key ?>  </option>  <?php } ?></select>
+                                       </td>
+                                   </tr> 
+                                  
+                                 <?php    } }  ?>
+                                
+                                </table>
+
+                                </div> -->
 				<input type="hidden" name="page_options" value="smack_microdata_settings" />
 				<input type="hidden" name="smack_microdata_hidden" value="1" />
-				<h2>Enable / Disable Social Profiles</h2><br/>
+				<h3>Enable / Disable Social Profiles</h3><br/>
 				<div class="smack_schema_form_options">
-					<input type="checkbox" id="googleplus" name="googleplus" <?php if($status['allowed']['gplus_access']==1){ ?> checked <?php } ?> />&nbsp;Google+ &nbsp; &nbsp; &nbsp;				
-					<input type="checkbox" id="facebook" name="facebook"  <?php if($status['allowed']['fbook_access']==1){ ?> checked <?php } ?>  />&nbsp;Facebook &nbsp; &nbsp; &nbsp;
-					<input type="checkbox" id="twitter" name="twitter"  <?php if($status['allowed']['twit_access']==1){ ?> checked <?php } ?>  />&nbsp;Twitter &nbsp; &nbsp; &nbsp;
-					<input type="checkbox" id="linkedin" name="linkedin"  <?php if($status['allowed']['linkin_access']==1){ ?> checked <?php } ?>  />&nbsp;Linkedin &nbsp; &nbsp; &nbsp;
+					<input type="checkbox" id="googleplus" name="googleplus" <?php if($status['allowed']['gplus_access']==1){ ?> checked <?php } ?> />&nbsp; Google+ &nbsp; &nbsp; &nbsp;				
+					<input type="checkbox" id="facebook" name="facebook"  <?php if($status['allowed']['fbook_access']==1){ ?> checked <?php } ?>  />&nbsp;   Facebook &nbsp; &nbsp; &nbsp;
+					<input type="checkbox" id="twitter" name="twitter"  <?php if($status['allowed']['twit_access']==1){ ?> checked <?php } ?>  />&nbsp;      Twitter &nbsp; &nbsp; &nbsp;
+					<input type="checkbox" id="linkedin" name="linkedin"  <?php if($status['allowed']['linkin_access']==1){ ?> checked <?php } ?>  />&nbsp;  Linkedin &nbsp; &nbsp; &nbsp;
 					<input type="checkbox" id="location" name="location"  <?php if($status['allowed']['location_access']==1){ ?> checked <?php } ?>  />&nbsp;Geo-Location &nbsp; &nbsp; &nbsp;
 				</div><br/>
 
@@ -38,11 +145,11 @@ $google_seo_config = get_option('smack_microdata_imageset');
 					$id=1;	
 					$img_set = get_option('smack_microdata_settings');
 					foreach($google_seo_config as $array){
-						$gimg=$array[g_image_url].$array[g_image];
-						$fimg=$array[f_image_url].$array[f_image];
-						$timg=$array[t_image_url].$array[t_image];
-						$limg=$array[l_image_url].$array[l_image];
-						$loc=$array[location_url].$array[location_image];
+						$gimg=$array['g_image_url'].$array['g_image'];
+						$fimg=$array['f_image_url'].$array['f_image'];
+						$timg=$array['t_image_url'].$array['t_image'];
+						$limg=$array['l_image_url'].$array['l_image'];
+						$loc=$array['location_url'].$array['location_image'];
 					?>
 						<input type="radio" id="imageset<?php echo $id; ?>" name="imageset" value="Imageset<?php echo $id; ?>" <?php if($id == $img_set['imageset']) {?> Checked <?php } ?>/> &nbsp; &nbsp; &nbsp; &nbsp;
 						<span><img src="<?php echo $gimg; ?>" /></span> &nbsp; &nbsp; &nbsp;
@@ -59,24 +166,11 @@ $google_seo_config = get_option('smack_microdata_imageset');
 				<input type="hidden" name="posted" value="<?php echo 'posted';?>">
 			</div>
 			<p class="submit">
-			<input type="submit" value="<?php _e('Save Settings');?>" class="button-primary"/>
+			<input type="submit" name="save_seo_settings" value="<?php _e('Save Settings');?>" class="button-primary"/>
 			</p>
 		</form>
 	</div>
         </div>  
-    	<div class="smack_schema_form_text" style="width:45%;float:right;margin-top:30px;margin-right:40px;">
-	    	<p>Google SEO Author Snippet Plugin gives you both SEO and social advantage.</p> 
-			<p>1. By default plugin is enabled on activation</p>
-			<p>2. You can disable on rare cases like for maintenance / testing</p>
-			<p>3. Choose your style of icon set</p>
-			<p>4. Select which social profile to be included</p>
-			<p>5. Save settings.</p>
-		</p> 
-		<p>Configuring our plugin is as simple as that. If you have any questions, issues and request on new features, plaese visit<a href="http://www.smackcoders.com/google-seo-author-snippet.html" target="_blank">&nbsp;Smackcoders.com </a></p>
-
-
-	<div align="center" style="margin-top:40px;"> "While the scripts on this site are free, donations are greatly appreciated. "<br/><br/><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fenzik@gmail.com&lc=JP&item_name=WordPress%20Plugins&item_number=wp%2dplugins&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" target="_blank"><img src="<?php echo SMACK_IMAGE_URL ; ?>./paypal_donate_button.png" /></a><br/><br/><a href="http://www.smackcoders.com/" target="_blank"><img src="http://www.smackcoders.com/wp-content/uploads/2012/09/Smack_poweredby_200.png"></a></div>
-	</div><br/>
 
 
 <?php

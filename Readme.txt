@@ -1,28 +1,35 @@
-=== Google SEO Author Snippet Plugin === 
+=== Google SEO Pressor for Rich snippets === 
 Contributors: smackcoders 
 Donate link: http://www.smackcoders.com/donate.html
-Tags: Google, plugin, admin, comments, twitter, links, author, custom, dashboard, facebook,  
-Requires at least: 3.8 
+Tags: Google, plugin, admin, comments, twitter, links, author, custom, dashboard, seo, all in one seo, yoast seo, twitter cards, structured data, microdata, microformat, Rich snippets, Breadcrumbs, Events, Music, Organizations, People, Products, Recipes, Review ratings, Reviews, Software applications, Videos, Facebook , Share, RDFa, schema.org , markup, automation, search, schema, 
+Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.5.0
+Stable tag: 1.2.0
 Author: smackcoders
 Author URI: http://profiles.wordpress.org/smackcoders/
 License: GPLv2 or later
 
-A powerful plugin to include microdata with extended authors social profiles built specially for SEO and social perspective. 
-
+Automate Google Structured data for your wordpress built specially for SEO and social perspective. 
 
 == Description == 
 
-Google SEO Author Snippet Plugin gives you both SEO and social advantage on your site/blog.  
+Google SEO Author Snippet Plugin is now Google SEO Pressor for Rich snippets. Now you can automate Google Structured data for your wordpress posts, pages, custom posts and categories wide easily using Google SEO Pressor for Rich snippets.  
 
-1. Allow authors to display their social profile links next to "posted by author" detail.  
-2. Includes Google+ profile with recomended rel=author tag 
-3. Includes Facebook, Twitter and Linkedin profiles in microdata (schema / snippet view / Google structure data) 
-4. And also can add their geo-location details in microdata. 
-5. Can disable all ot one of these by leaving it as empty. 
-6. Also both registered users and authors can display their profiles in comments.  
+Refer - https://support.google.com/webmasters/topic/21997?hl=en&ref_topic=1724122 and https://support.google.com/webmasters/answer/146897
 
+Supports all snippets as recommended by google.
+	Rich snippets - Breadcrumbs
+    Rich snippets - Events
+    Rich snippets - Music
+    Rich snippets - Organizations
+    Rich snippets - People
+    Rich snippets - Products
+    Rich snippets - Recipes
+    Rich snippets - Review ratings
+    Rich snippets - Reviews
+    Rich snippets - Software applications
+    Rich snippets - Videos: Facebook Share and RDFa
+    schema.org markup for videos
 
 SEO And Social Advantages 
 ------------------------- 
@@ -35,34 +42,44 @@ SEO And Social Advantages
 -	In over all reduces the bounce rate. 
 -	Turns every visitor into unique and frequent user. 
 
-
-Planned Feature and Recommended 
--------------------------------- 
-
-Have a list of authors and users with their social profiles in a page or post. This will serve like a Social Profile cum user directory. 
-You can use a existing plugin for now. As we have planned to add this in future release. And that will be within couple of weeks. Also encourage your visitors to register to get listed here. Or lock this content for registered users only. Don't forget to keep a catchy social share buttons on top and bottom of content to get viral. By this you can gain more free traffic.  
-
-
-Support and Feature requests. 
----------------------------- 
-Please visit http://www.smackcoders.com/google-seo-author-snippet.html for guides and tutorials. 
-For quick response and reply please create issues in our [support](http://forge.smackcoders.com/projects/Google-seo-author-snippets/issues) instead of WordPress support forum. Support at WordPress is not possible for now. 
-
+Don't hesitate to pass your comments, feedback and suggestions. Visit our [Smackcoders Blog](https://www.smackcoders.com/blog) for more news and future plans.
 
 == Installation == 
 
-Please click here for [Installation instruction](http://www.smackcoders.com/google-seo-author-snippet.html)
+To begin making your WordPress more SEO optimized for google:
+
+    Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
+    Activate the plugin through the 'Plugins' menu in WordPress
+    Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.
 
 
 == Screenshots == 
 
-1. Admin settings for Google SEO Author Snippet Plugin . 
-2. Admin settings for Image set configuration to the front-end. 
+1. Admin settings for Google SEO Pressor Rich Snippets Plugin . 
+2. Google SEO Pressor Rich Snippets Post edit view 
 3. Microdata Social profile information and User Geo-Information for user profile settings. 
 4. Preview form placed in widget area to the front-end. 
 
-
 == Changelog == 
+
+=1.2.0=		
+* Completely revamped to meet current google structured data requirement 
+* Supports more than 11 snippets
+* Added: Google rich snippets for People.
+* Added: Google rich snippets for Product.
+* Added: Google rich snippets for Events.
+* Added: Google rich snippets for Organisation.
+* Added: Google rich snippets for Recipes.
+* Added: Google rich snippets for Review.
+* Added: Google rich snippets for Music.
+* Added: Google rich snippets for Software applications.
+* Added: Google rich snippets for Videos: Facebook Share and RDFa.
+* Added: Setting the google for each available post types.
+* Added: Auto/Manual support only for (Google rich snippets-product).
+* Automated snippets with easy mapping
+* Can override post wide
+* Option to apply post types and category wise
+* WordPress 4.0 compatibility checked.
 
 =1.1.0=		Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
 
@@ -71,22 +88,21 @@ Please click here for [Installation instruction](http://www.smackcoders.com/goog
 =1.0.0=		Initial release version. Tested and found works well without any issues. 
 
 
-
-
 == Upgrade Notice == 
 
-=v 1.1.0=		Bug fix - Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
+=v 1.2.0=	Upgrade for newly added new snippets and automation
 
+=v 1.1.0=	Bug fix - Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
 
 =v 1.0.1=		Bug fix - Image conflicts, Added Extra Social Icon sets.
-
 
 =v 1.0.0=		Initial release of plugin 
 
 
 == Frequently Asked Questions == 
-Please click here for [Detailed FAQ](http://www.smackcoders.com/google-seo-author-snippet.html) 
-    
-For quick response and reply please create issues in our [support](http://forge.smackcoders.com/projects/google-seo-author-snippets/issues) instead of WordPress support forum.
 
+How to install? 
 
+    Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
+    Activate the plugin through the 'Plugins' menu in WordPress
+    Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.

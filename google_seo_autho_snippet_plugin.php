@@ -1,9 +1,9 @@
 <?php 
 /*
-*Plugin Name: Google SEO Author Snippet Plugin
+*Plugin Name: Google SEO Pressor Snippet Plugin
 *Plugin URI: http://www.smackcoders.com/google-seo-author-snippet-wordpress-plugin.html
 *Description: A plugin that Manages the user's social profile details
-*Version: 1.1.0
+*Version: 1.2.0
 *Author: smackcoders.com
 *Author URI: http://www.smackcoders.com
 *
@@ -28,7 +28,30 @@
 ***********************************************************************************************
 */
 
+@ini_set('display_errors', 0);
+define('GSAS_version' , '1.2.0');
+if ( ! defined( 'GSAS_PATH' ) ) {
+	define( 'GSAS_PATH', plugin_dir_path( __FILE__ ) );
+}
+if ( ! defined( 'GSAS_BASENAME' ) ) {
+	define( 'GSAS_BASENAME', plugin_basename( __FILE__ ) );
+}
+if( !defined( 'GSAS_BASEURL' ) ) {
+	define( 'GSAS_BASEURL', plugin_dir_url( __FILE__ ) ); 
+}
+
+define('WP_PLUGIN_NAME', 'Google SEO Pressor Rich Snippets');
+//require_once 'create_meta_box.php';   
 define('SMACK_IMAGE_URL', get_bloginfo('wpurl').'/wp-content/plugins/google-seo-author-snippets/images/');
+$snippets = array('Rich snippets - Events',
+    'Rich snippets - Music',
+    'Rich snippets - Organizations',
+    'Rich snippets - People',
+    'Rich snippets - Products',
+    'Rich snippets - Recipes',
+    'Rich snippets - Reviews',
+    'Rich snippets - Software applications',
+    'Rich snippets - Videos: Facebook Share and RDFa' );
 
 $FieldNames[0] = array(
 		'g_image' => 'googleplus-icon-setone.png',
@@ -84,6 +107,7 @@ function deactivate_now()
 {
 	delete_option( 'smack_microdata_settings');
 	delete_option( 'smack_microdata_imageset');
+	delete_option( 'snippets_types');
 	$blogusers = get_users();
 	foreach($blogusers as $users){
 		delete_user_meta($users->ID, 'smack_social_links' );
@@ -97,14 +121,52 @@ class MyPlugin {
 }
 register_activation_hook( __FILE__, array('MyPlugin', 'install') );
 update_option( 'smack_microdata_imageset' , $FieldNames );
+update_option( 'snippets_types' , $snippets );
+if(is_admin()) {
 
 require_once 'microdata_form.php';
+require_once 'create_meta_box.php';
+require_once 'support-form.php';
+
+}
+else {
+include(GSAS_PATH. 'schema/gsas_schema_for_product.php');
+include(GSAS_PATH. 'schema/gsas_schema_for_events.php');
+include(GSAS_PATH. 'schema/gsas_schema_for_music.php');
+include(GSAS_PATH. 'schema/gsas_schema_for_videos.php');
+include(GSAS_PATH. 'schema/gsas_schema_for_software_application.php');
+include(GSAS_PATH. 'schema/gsas_schema_for_receipes.php');
+include(GSAS_PATH. 'schema/gsas_schema_for_organisation.php');
+include(GSAS_PATH. 'schema/gsas_schema_for_people.php');
+include(GSAS_PATH. 'schema/gsas_schema_for_review.php');
+
+}
+
+function action_google_seo_snippets_admin_init() {
+	wp_enqueue_script('microdata_configuration_page', plugins_url('js/smack-microdata.js', __FILE__));
+        wp_enqueue_script('microdata_configuration_pag', plugins_url('js/jquery.plugin.js', __FILE__));
+        wp_enqueue_script('microdata_configuration_pa', plugins_url('js/jquery.datepick.js', __FILE__));
+        wp_enqueue_style('microdata_configuration_p', plugins_url('js/jquery.datepick.css', __FILE__));
+        wp_enqueue_style('microdata_configuration_meta_css', plugins_url('js/google_seo_meta_box.css', __FILE__));
+}
+add_action('admin_init', 'action_google_seo_snippets_admin_init');
+
 function admin_menus() {  
 	$contentUrl = WP_CONTENT_URL; 
-	add_menu_page('Plugin settings', 'Google SEO Author Snippet', 'manage_options',  
-	       'plugin_configuration', 'microdata_configuration_page', "$contentUrl/plugins/google-seo-author-snippets/images/icon.png");
+	add_menu_page('Google SEO Pressor Snippets', 'Google SEO Pressor Snippets', 'manage_options','plugin_configuration','microdata_configuration_page',"$contentUrl/plugins/google-seo-author-snippets/images/icon.png" );
+        add_submenu_page('plugin_configuration','Support','Support','manage_options','support_form', 'support_form');  
+	
 }  
    add_action("admin_menu", "admin_menus"); 
 
-wp_enqueue_script("microdata_configuration_page", "/wp-content/plugins/google-seo-author-snippets/js/smack-microdata.js", array("jquery"));
+function send2smackers() {
+require_once("sendmail.php");
+	die();
+}
+add_action('wp_ajax_send2smackers', 'send2smackers');
+
+
+//require_once('../../schema/gsas_schema_for_product.php' );
+
+#wp_enqueue_script("microdata_configuration_page", "/wp-content/plugins/google-seo-author-snippets/js/smack-microdata.js", array("jquery"));
 ?>
