@@ -18,18 +18,19 @@ Google SEO Author Snippet Plugin is now Google SEO Pressor for Rich snippets. No
 Refer - https://support.google.com/webmasters/topic/21997?hl=en&ref_topic=1724122 and https://support.google.com/webmasters/answer/146897
 
 Supports all snippets as recommended by google.
-	Rich snippets - Breadcrumbs
-    Rich snippets - Events
-    Rich snippets - Music
-    Rich snippets - Organizations
-    Rich snippets - People
-    Rich snippets - Products
-    Rich snippets - Recipes
-    Rich snippets - Review ratings
-    Rich snippets - Reviews
-    Rich snippets - Software applications
-    Rich snippets - Videos: Facebook Share and RDFa
-    schema.org markup for videos
+Supports all snippets as recommended by google.
+-	Rich snippets - Breadcrumbs
+-	Rich snippets - Events
+-	Rich snippets - Music
+-	Rich snippets - Organizations
+-	Rich snippets - People
+-	Rich snippets - Products
+-	Rich snippets - Recipes
+-	Rich snippets - Review ratings
+-	Rich snippets - Reviews
+-	Rich snippets - Software applications
+-	Rich snippets - Videos: Facebook Share and RDFa
+-	schema.org markup for videos
 
 SEO And Social Advantages 
 ------------------------- 
