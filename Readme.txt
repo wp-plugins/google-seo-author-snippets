@@ -2,9 +2,9 @@
 Contributors: smackcoders 
 Donate link: http://www.smackcoders.com/donate.html
 Tags: Google, plugin, admin, comments, twitter, links, author, custom, dashboard, seo, all in one seo, yoast seo, twitter cards, structured data, microdata, microformat, Rich snippets, Breadcrumbs, Events, Music, Organizations, People, Products, Recipes, Review ratings, Reviews, Software applications, Videos, Facebook , Share, RDFa, schema.org , markup, automation, search, schema, 
-Requires at least: 3.8
+Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Author: smackcoders
 Author URI: http://profiles.wordpress.org/smackcoders/
 License: GPLv2 or later
@@ -49,9 +49,9 @@ Don't hesitate to pass your comments, feedback and suggestions. Visit our [Smack
 
 To begin making your WordPress more SEO optimized for google:
 
-    Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
-    Activate the plugin through the 'Plugins' menu in WordPress
-    Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.
+1. Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.
 
 
 == Screenshots == 
@@ -63,7 +63,11 @@ To begin making your WordPress more SEO optimized for google:
 
 == Changelog == 
 
-=1.2.0=		
+= 1.2.1 =
+* Modified: Menu Order changes added to avoid the blank page issues.
+* Added: Dynamic Debug mode enable/disable feature in settings module.
+
+= 1.2.0 =		
 * Completely revamped to meet current google structured data requirement 
 * Supports more than 11 snippets
 * Added: Google rich snippets for People.
@@ -82,28 +86,30 @@ To begin making your WordPress more SEO optimized for google:
 * Option to apply post types and category wise
 * WordPress 4.0 compatibility checked.
 
-=1.1.0=		Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
+= 1.1.0 =	Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
 
-=1.0.1=		Image Conflicts Bug Fixed, Added Extra Social Icon sets.
+= 1.0.1 =		Image Conflicts Bug Fixed, Added Extra Social Icon sets.
 
-=1.0.0=		Initial release version. Tested and found works well without any issues. 
+= 1.0.0 =		Initial release version. Tested and found works well without any issues. 
 
 
 == Upgrade Notice == 
 
-=v 1.2.0=	Upgrade for newly added new snippets and automation
+=v 1.2.1=	Upgrade for dynamic debug mode enable/disable feature.
 
-=v 1.1.0=	Bug fix - Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
+= 1.2.0 =	Upgrade for newly added new snippets and automation
 
-=v 1.0.1=		Bug fix - Image conflicts, Added Extra Social Icon sets.
+= 1.1.0 =	Bug fix - Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
 
-=v 1.0.0=		Initial release of plugin 
+= 1.0.1 =		Bug fix - Image conflicts, Added Extra Social Icon sets.
+
+= 1.0.0 =		Initial release of plugin 
 
 
 == Frequently Asked Questions == 
 
 How to install? 
 
-    Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
-    Activate the plugin through the 'Plugins' menu in WordPress
-    Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.
+* Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
+* Activate the plugin through the 'Plugins' menu in WordPress
+* Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.

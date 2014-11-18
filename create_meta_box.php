@@ -139,9 +139,15 @@ class ADD_META_BOX {
                        // echo '<pre>'; print_r($value); die; 
                          ?>
                         <tr valign="top"> <th> 
-                         <label for="google_seo_meta_title"><?php  _e( $title );  ?></label>
-                          </th>
-                          <td><?php
+                        <label for="google_seo_meta_title"><?php  _e( $title );  ?></label>
+                        </th>
+			<!--<td>
+			<?php if($field['type']=='checkbox'){ ?>
+                        <div class="socialaccess">
+                        <?php echo '<input type="checkbox" id="'.$field['id'].'" name="'.$field['id'].'" style="display:none"/><label for="'.$field['id'].'" /></label>' ?>
+                        </div><?php } ?>
+                        </td>-->
+                         <td><?php
 		         if($field['type']=='datepicker'){
                                    echo '<input type="date" id="'.$field['id'].'" name="'.$field['id'].'" value="'.$value.'" />';
                        echo '<script type="text/javascript">'.
@@ -248,6 +254,12 @@ class ADD_META_BOX {
                          <label for="google_seo_meta_title"><?php  _e( $product_title );  ?></label>
                          <?php } ?>
                           </th>
+				<td>
+                        <?php if($product_field['type']=='checkbox'){ ?>
+                        <div class="socialaccess" style="float:right;margin-top:2px;">
+                        <?php echo '<input type="checkbox" id="'.$product_field['id'].'" name="'.$product_field['id'].'" style="display:none;"/><label for="'.$product_field['id'].'" /></label>' ?>
+                        </div><?php } ?>
+                        </td>
                           <td><?php
                                  foreach(get_option('auto') as $auto_key => $auto_val) { if($auto_key == 'product') { 
                                   $manual_product = 'on'; } else { $manual_product = 'off'; }  }
@@ -278,8 +290,6 @@ class ADD_META_BOX {
                                         <?php  } else { ?>
                       <?php if($product_field['type'] != 'checkbox' ) {
                        ?> 
-                        
-                            
                            <select class="large_text" id="<?php echo $product_field['id'] ?>"  name= "<?php echo $product_field['id'] ?>" />                    <option value ="<?php  echo $product_value;?> " > <?php echo $product_value; ?> </option>
                            <?php foreach ( $custom_field_keys as $cf_key => $cf_val ) {
                            if((!in_array($cf_val, $google ,TRUE)) && ($cf_val != '_edit_last') && ($cf_val != '_edit_lock'))  { ?>
@@ -292,10 +302,8 @@ class ADD_META_BOX {
                            
                         </div>
                            <?php } }?> 
-
-				</td>
-                         </tr>
-                   <?php }?>
+			</td></tr>
+                           <?php }?>
                        </table>
                   </div> <!-- Products -->   
               <div class= "music">
@@ -556,21 +564,22 @@ $meta_box[]=array(
 			array( 'id'=>$prefix.'organisation_latitude', 'name'=>'Latitude' )
 				     ),
 		 'product_fields' => array(
-                        array( 'id'=>$prefix.'product_name', 'name'=>'Product Name', 'type' => 'text' ),
+
+//			array( 'id'=>$prefix.'product_manual_auto', 'name'=>'Manual/Auto product','type'=>'checkbox'),
+                        array( 'id'=>$prefix.'product_name', 'name'=>'Product Name', 'type' => 'text'),
                         array( 'id'=>$prefix.'sku', 'name'=>'Sku' , 'type' => 'text' ),
                         array( 'id'=>$prefix.'product_image', 'name'=>'Product Image' ,'type'=> 'text'),
                         array( 'id'=>$prefix.'product_description', 'name'=>'Product Description' ,'type' => 'textarea'),
-                        array( 'id'=>$prefix.'product_category', 'name'=>'Product Category','type' => 'text' ),
-                        array( 'id'=>$prefix.'product_currency', 'name'=>'Product Currency','type' => 'text' ),
-                        array( 'id'=>$prefix.'brand_name', 'name'=>'Brand Name','type' => 'text' ),
-                        array( 'id'=>$prefix.'offer_regular_price', 'name'=>'Offer Regular Price', 'type' => 'text' ),
-                        array( 'id'=>$prefix.'offer_sale_price', 'name'=>'Offer Sale Price','type' => 'text' ),
+                        array( 'id'=>$prefix.'product_category', 'name'=>'Product Category','type' => 'text'),
+                        array( 'id'=>$prefix.'product_currency', 'name'=>'Product Currency','type' => 'text'),
+                        array( 'id'=>$prefix.'brand_name', 'name'=>'Brand Name','type' => 'text'),
+                        array( 'id'=>$prefix.'offer_regular_price', 'name'=>'Offer Regular Price','type' => 'text'),
+                        array( 'id'=>$prefix.'offer_sale_price', 'name'=>'Offer Sale Price','type' => 'text'),
                         array( 'id'=>$prefix.'offer_available_from','name'=>'Offer Available From','type' => 'datepicker'),
-                        array( 'id'=>$prefix.'offer_condition', 'name'=>'Offer Condition','type' => 'text' ),
-                        array( 'id'=>$prefix.'product_seller', 'name'=>'Seller','type' => 'text' ),
+                        array( 'id'=>$prefix.'offer_condition', 'name'=>'Offer Condition','type' => 'datepicker'),
+                        array( 'id'=>$prefix.'product_seller', 'name'=>'Seller', 'type' => 'text'),
                         array( 'id'=>$prefix.'offer_valid_upto', 'name'=>'Offer Valid Upto' ,'type'=>'datepicker'),
-                        array( 'id'=>$prefix.'offer_stock', 'name'=>'Offer Stock','type' => 'text' ),
-                        array( 'id'=>$prefix.'product_auto', 'name'=> 'ptype', 'type' => 'checkbox','label' => 'Automatted' )
+                        array( 'id'=>$prefix.'offer_stock', 'name'=>'Offer Stock','type' => 'text'),
                                      ),
 		 'receipes_fields' => array(
                         array( 'id'=>$prefix.'receipes_name', 'name'=>'Receipes Name'),

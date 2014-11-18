@@ -3,7 +3,7 @@
 *Plugin Name: Google SEO Pressor Snippet Plugin
 *Plugin URI: http://www.smackcoders.com/google-seo-author-snippet-wordpress-plugin.html
 *Description: A plugin that Manages the user's social profile details
-*Version: 1.2.0
+*Version: 1.2.1
 *Author: smackcoders.com
 *Author URI: http://www.smackcoders.com
 *
@@ -28,8 +28,13 @@
 ***********************************************************************************************
 */
 
-@ini_set('display_errors', 0);
-define('GSAS_version' , '1.2.0');
+$get_debug_mode = get_option('smack_microdata_settings');
+if($get_debug_mode['allowed']['debug_mode'] != 1) {
+        error_reporting(0);
+        ini_set('display_errors', 'Off');
+}
+
+define('GSAS_version' , '1.2.1');
 if ( ! defined( 'GSAS_PATH' ) ) {
 	define( 'GSAS_PATH', plugin_dir_path( __FILE__ ) );
 }
@@ -148,16 +153,39 @@ function action_google_seo_snippets_admin_init() {
         wp_enqueue_script('microdata_configuration_pa', plugins_url('js/jquery.datepick.js', __FILE__));
         wp_enqueue_style('microdata_configuration_p', plugins_url('js/jquery.datepick.css', __FILE__));
         wp_enqueue_style('microdata_configuration_meta_css', plugins_url('js/google_seo_meta_box.css', __FILE__));
+
+	wp_enqueue_style('microdata_configuration_css', plugins_url('css/style.css', __FILE__));
+
 }
 add_action('admin_init', 'action_google_seo_snippets_admin_init');
 
 function admin_menus() {  
+	$settings = get_option('smack_microdata_settings');
+	if(!is_array($settings) && empty($settings)) {
+		$settings['allowed']['debug_mode'] = 0;
+		update_option('smack_microdata_settings', $settings);
+	}
 	$contentUrl = WP_CONTENT_URL; 
 	add_menu_page('Google SEO Pressor Snippets', 'Google SEO Pressor Snippets', 'manage_options','plugin_configuration','microdata_configuration_page',"$contentUrl/plugins/google-seo-author-snippets/images/icon.png" );
-        add_submenu_page('plugin_configuration','Support','Support','manage_options','support_form', 'support_form');  
+
+        add_submenu_page('plugin_configuration','Contact Us','Contact Us','manage_options','support_form', 'support_form');  
 	
 }  
-   add_action("admin_menu", "admin_menus"); 
+add_action("admin_menu", "admin_menus"); 
+add_filter( 'custom_menu_order', '__return_true' );
+add_filter( 'menu_order', 'smackgsas_change_menu_order' );
+
+// Move Pages above Media
+function smackgsas_change_menu_order ( $menu_order ) {
+	return array(
+			'index.php',
+			'edit.php',
+			'edit.php?post_type=page',
+			'upload.php',
+			'plugin_configuration',
+		    );
+}
+
 
 function send2smackers() {
 require_once("sendmail.php");

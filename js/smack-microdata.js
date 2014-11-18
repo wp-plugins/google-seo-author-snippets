@@ -128,4 +128,54 @@ function sendemail2smackers() {
 		return false;
      }
 }
-
+/*Js UI align*/
+function gplusprofile(id) {
+         if(document.getElementById('googleplus').checked == true)  {
+                jQuery('#gpluslabel').removeClass("disableprofile");
+                jQuery('#gpluslabel').addClass("enableprofile");
+         }
+	else {
+		jQuery('#gpluslabel').addClass("disableprofile");
+                jQuery('#gpluslabel').removeClass("enableprofile");
+ 	}
+}
+function fbprofile(id) {
+        if(document.getElementById('facebook').checked == true) {
+                jQuery('#fblabel').removeClass("disableprofile");
+                jQuery('#fblabel').addClass("enableprofile");
+        }
+	else {
+		jQuery('#fblabel').removeClass("enableprofile");
+                jQuery('#fblabel').addClass("disableprofile");
+	}
+}
+function twitprofile(id) {
+	if(document.getElementById('twitter').checked == true) {
+                jQuery('#twitlabel').removeClass("disableprofile");
+                jQuery('#twitlabel').addClass("enableprofile");
+        }
+	else {
+		jQuery('#twitlabel').removeClass("enableprofile");
+                jQuery('#twitlabel').addClass("disableprofile");
+ 	}
+ }
+function linkinprofile(id) {
+	if(document.getElementById('linkedin').checked == true) {
+                jQuery('#linkinlabel').removeClass("disableprofile");
+               jQuery('#linkinlabel').addClass("enableprofile");
+	}
+	else {
+		jQuery('#linkinlabel').removeClass("enableprofile");
+                jQuery('#linkinlabel').addClass("disableprofile");
+	}
+}
+function geolocprofile(id) {
+       	if(document.getElementById('location').checked == true) {
+                jQuery('#geoloclabel').removeClass("disableprofile");
+                jQuery('#geoloclabel').addClass("enableprofile");
+	}
+	else {
+		jQuery('#geoloclabel').removeClass("enableprofile");
+                jQuery('#geoloclabel').addClass("disableprofile");
+        }
+}
