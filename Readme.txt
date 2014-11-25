@@ -1,6 +1,6 @@
 === Google SEO Pressor for Rich snippets === 
 Contributors: smackcoders 
-Donate link: http://www.smackcoders.com/donate.html
+Donate link: https://www.smackcoders.com/donate.html
 Tags: Google, plugin, admin, comments, twitter, links, author, custom, dashboard, seo, all in one seo, yoast seo, twitter cards, structured data, microdata, microformat, Rich snippets, Breadcrumbs, Events, Music, Organizations, People, Products, Recipes, Review ratings, Reviews, Software applications, Videos, Facebook , Share, RDFa, schema.org , markup, automation, search, schema, 
 Requires at least: 3.9
 Tested up to: 4.0
@@ -16,6 +16,8 @@ Automate Google Structured data for your wordpress built specially for SEO and s
 Google SEO Author Snippet Plugin is now Google SEO Pressor for Rich snippets. Now you can automate Google Structured data for your wordpress posts, pages, custom posts and categories wide easily using Google SEO Pressor for Rich snippets.  
 
 Refer - https://support.google.com/webmasters/topic/21997?hl=en&ref_topic=1724122 and https://support.google.com/webmasters/answer/146897
+
+[Read More From Plugin Wiki](http://wiki.smackcoders.com/WP_Google_SEO_Author_Snippet_Version_1.2.0)
 
 Supports all snippets as recommended by google.
 ------------------------- 
