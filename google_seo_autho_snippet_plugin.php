@@ -3,7 +3,7 @@
 *Plugin Name: Google SEO Pressor Snippet Plugin
 *Plugin URI: http://www.smackcoders.com/google-seo-author-snippet-wordpress-plugin.html
 *Description: A plugin that Manages the user's social profile details
-*Version: 1.2.1
+*Version: 1.2.2
 *Author: smackcoders.com
 *Author URI: http://www.smackcoders.com
 *
@@ -34,7 +34,7 @@ if($get_debug_mode['allowed']['debug_mode'] != 1) {
         ini_set('display_errors', 'Off');
 }
 
-define('GSAS_version' , '1.2.1');
+define('GSAS_version' , '1.2.2');
 if ( ! defined( 'GSAS_PATH' ) ) {
 	define( 'GSAS_PATH', plugin_dir_path( __FILE__ ) );
 }

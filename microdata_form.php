@@ -8,11 +8,17 @@ global $wpdb;
 //$post_var = get_option('auto');
 //  foreach($post_var as $key => $value) { echo '<pre>'; print_r($value); } die;
 if(isset($_POST['save_seo_settings']) && $_POST['save_seo_settings'] == 'Save Settings') {
-	update_option('post_check',$_POST['snippets']);
-	update_option('auto',$_POST['auto']);
+	$snip = ''; $auto = ''; $snippet_type = '';
+	if(isset($_POST['snippets'])) { $snip = $_POST['snippets'];  }
+	if(isset($_POST['auto'])) { $auto = $_POST['auto']; }
+	if(isset($_POST['snippets_type'])) { $snippet_type = $_POST['snippets_type']; }
+
+	update_option('post_check',$snip);
+	update_option('auto',$auto);
 	update_option('snippet_settings',$_POST['snippets_type']);
 }
 $google_seo_config = get_option('smack_microdata_imageset');
+
 ?>
 	<div class="wrap" >
 	<!--<div class="icon32" id="icon-schema"><br></div>-->
@@ -50,7 +56,7 @@ $google_seo_config = get_option('smack_microdata_imageset');
 				</div>
 		    	</div>  <br/>
                         
-			<div id="smack-container"  <?php if($status['config_status'] == 2){ ?> style="display:none" <?php } ?> >
+			<div id="smack-container"  <?php if(isset($status['config_status'] ) && ($status['config_status'] == 2)){ ?> style="display:none" <?php } ?> >
                                 <div id="posttype" style="margin-top:-15px;">
                                  <h3> <?php _e('Available Post Types') ?>  </h3>
 					<input type="radio" id="post_type" name="type" value="Posts"  onclick="choose_snippets(this.id);"  checked /><label id="textalign"><?php  _e('Post Types')  ?> </label>
@@ -65,12 +71,13 @@ $google_seo_config = get_option('smack_microdata_imageset');
                                      <th style="width:140px;"><h3><?php _e('Twitter Cards') ?></h3></th> 
                                      <th style="width:140px;"><h3><?php _e('Based On Post Format') ?></h3></th>
                                  </tr>
-                                 <?php foreach(get_post_types() as $post_types => $value1 ){ 
+                                 <?php $get_type = get_post_types();  if(isset($get_type)) { foreach($get_type as $post_types => $value1 ){ 
                                 if (($value1 != 'featured_image') && ($value1 != 'attachment') && ($value1 != 'wpsc-product') && ($value1 != 'wpsc-product-file') && ($value1 != 'revision') && ($value1 != 'nav_menu_item')&& ($value1 != 'wp-types-group') && ($value1 != 'wp-types-user-group') &&  ($value1 != 'product_variation') && ($value1 != 'shop_order') && ($value1 != 'shop_coupon') && ($value1 != 'acf') && ($value1 != 'createdByCCTM') && ($value1 != 'createdByTypes')) { ?>                             
                                 <tr style="height:45px">
                                     <td> 
-                                  <?php  $get_option = get_option('post_check'); ?>
-                                  <input type = "checkbox" name = "snippets[<?php _e($value1) ?>]" id = "<?php _e($value1) ?>" <?php foreach($get_option as $post_types=> $val) { if( ($post_types == $value1 ) && ( $val == 'on')) { ?> checked <? } } ?>  /><label id="textalign"> <?php _e($value1) ?> </label>
+                                  <?php  $get_option = get_option('post_check');  ?>
+					
+                                  <input type = "checkbox" name = "snippets[<?php if(isset($value1)) { _e($value1); }?>]" id = "<?php if(isset($value1)){ _e($value1); } ?>" <?php if(!empty($get_option)){ foreach($get_option as $post_types => $val) { if( (isset($post_types) && ($post_types == $value1 ) && ( $val == 'on'))) { ?> checked <? } }} ?>  /><label id="textalign"> <?php if(isset($value1)){ _e($value1); } ?> </label>
                                   </td>
                                   <td style="padding-left:26px">
 	                                   <?php $snippets = get_option('snippets_types'); ?>
@@ -90,7 +97,7 @@ $google_seo_config = get_option('smack_microdata_imageset');
                              </select>
                                   </td>
                                   <td>
-                                     		<label style = 'padding-left:40%;'><input type ="checkbox" name = "auto[<?php echo $value1;?>]" id = "<?php echo$value1;?>" onclick = 'auto(this.id);' <?php foreach(get_option('auto') as $sauto => $autoval) { if(($sauto == $value1 ) && ($autoval == 'on')) { ?> checked <?php }} ?> /></label>
+                                     		<label style = 'padding-left:40%;'><input type ="checkbox" name = "auto[<?php echo $value1;?>]" id = "<?php echo$value1;?>" onclick = 'auto(this.id);' <?php $get_auto = get_option('auto'); if(!empty($get_auto)){ foreach($get_auto as $sauto => $autoval) { if(($sauto == $value1 ) && ($autoval == 'on')) { ?> checked <?php }}} ?> /></label>
                                   </td>
                                   <td>
 	                                        <label style = 'padding-left:40%;'><input type ="checkbox" name = "<?php _e($value1.'twit') ?>" id = "<?php _e($value1.'twit')?> " onclick = 'twit(this.id);' /></label>
@@ -100,7 +107,7 @@ $google_seo_config = get_option('smack_microdata_imageset');
                                   </td>
                                   </td>
                                    </tr> 
-                                  <?php    } } ?>
+                                  <?php    } } } ?>
                                 </table>
                                 </div>
                             <!--    <div id = "disp_categories" style = "display:none">
@@ -155,31 +162,31 @@ $google_seo_config = get_option('smack_microdata_imageset');
 							<label id="textalign">Google+</label>
 					</td><td>
 							<div class="socialaccess">
-								<input type="checkbox" id="googleplus" name="googleplus" <?php if($status['allowed']['gplus_access']==1){ ?> checked <?php } ?> style="display:none" /> <label id="sociallabel" for="googleplus"></label>
+								<input type="checkbox" id="googleplus" name="googleplus" <?php if(isset($status['allowed']['gplus_access']) && ($status['allowed']['gplus_access']==1)){ ?> checked <?php } ?> style="display:none" /> <label id="sociallabel" for="googleplus"></label>
 							</div>
 					</td><td>			
 							<label id="textalign">Facebook</label>
 					</td><td>
 							<div class="socialaccess">
-								<input type="checkbox" id="facebook" name="facebook"  <?php if($status['allowed']['fbook_access']==1){ ?> checked <?php } ?> style="display:none" /> <label id="sociallabel" for="facebook"></label>
+								<input type="checkbox" id="facebook" name="facebook"  <?php if(isset($status['allowed']['fbook_access']) && ($status['allowed']['fbook_access'] == 1)){ ?> checked <?php } ?> style="display:none" /> <label id="sociallabel" for="facebook"></label>
 							</div>
 				        </td><td>
 							<label id="textalign">Twitter</label>
 					</td><td>
 							<div class="socialaccess">
-								<input type="checkbox" id="twitter" name="twitter"  <?php if($status['allowed']['twit_access']==1){ ?> checked <?php } ?> style="display:none"/> <label id="sociallabel" for="twitter" /></label>
+								<input type="checkbox" id="twitter" name="twitter"  <?php if(isset($status['allowed']['twit_access']) && ($status['allowed']['twit_access']==1)){ ?> checked <?php } ?> style="display:none"/> <label id="sociallabel" for="twitter" /></label>
 							</div>
 					</td><td>
 							<label id="textalign">LinkedIn</label>
 					</td><td>
 							<div class="socialaccess">
-								<input type="checkbox" id="linkedin" name="linkedin"  <?php if($status['allowed']['linkin_access']==1){ ?> checked <?php } ?> style="display:none" /> <label id="sociallabel" for="linkedin"></label>
+								<input type="checkbox" id="linkedin" name="linkedin"  <?php if(isset($status['allowed']['linkin_access']) && ($status['allowed']['linkin_access']==1)){ ?> checked <?php } ?> style="display:none" /> <label id="sociallabel" for="linkedin"></label>
 							</div>
 					</td><td>
 							<label id="textalign">Geo-Location</label>
 					</td><td>
 							<div class="socialaccess">
-								<input type="checkbox" id="location" name="location"  <?php if($status['allowed']['location_access']==1){ ?> checked <?php } ?> style="display:none" /> <label id="sociallabel" for="location"></label>
+								<input type="checkbox" id="location" name="location"  <?php if(isset($status['allowed']['location_access']) && ($status['allowed']['location_access']==1)){ ?> checked <?php } ?> style="display:none" /> <label id="sociallabel" for="location"></label>
 							</div>
 					</td></tr>
 					</tbody></table>
@@ -198,7 +205,7 @@ $google_seo_config = get_option('smack_microdata_imageset');
 							$limg=$array['l_image_url'].$array['l_image'];
 							$loc=$array['location_url'].$array['location_image'];
 						?>
-						<label id="socialimglabel"><input type="radio" id="imageset<?php echo $id; ?>" name="imageset" value="Imageset<?php echo $id; ?>" <?php if($id == $img_set['imageset']) {?> Checked <?php } ?>/></label>
+						<label id="socialimglabel"><input type="radio" id="imageset<?php echo $id; ?>" name="imageset" value="Imageset<?php echo $id; ?>" <?php if(isset($img_set['imageset']) && ($id == $img_set['imageset'])) {?> Checked <?php } ?>/></label>
 						<label id="socialimg"><img src="<?php echo $gimg; ?>" /></label>
 						<label id="socialimg"><img src="<?php echo $fimg; ?>" /></label>
 						<label id="socialimg"><img src="<?php echo $timg; ?>" /></label>
@@ -267,7 +274,7 @@ if( sizeof($_POST) && isset($_POST["smack_microdata_hidden"]) ) {
 
 /* Form for maintain the social profile links */
 $get = get_option('smack_microdata_settings');
-if($get['config_status']==1){
+if($get['config_status'] == 1){
 	add_action( 'show_user_profile', 'yoursite_extra_user_profile_fields' );
 	add_action( 'edit_user_profile', 'yoursite_extra_user_profile_fields' );
 	function yoursite_extra_user_profile_fields( $user ) {
@@ -447,6 +454,7 @@ if($get['config_status']==1){
 	add_filter('comments_array','smack_custom_comments_list');
 
 	function smack_custom_comments_list($comments){
+
 		foreach($comments as $comment){
 			$get_info = get_user_meta( $comment->user_id, 'smack_social_links' );
 			$gplus_profile = $get_info[0]['gplus'];

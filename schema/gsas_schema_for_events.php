@@ -81,6 +81,7 @@ function google_seo_schema_events($text) {
   </span>
  </span>
 </div>';
+
       return $text.$google_seo_schema_events;
 }
 function google_seo_schema_add_events() {

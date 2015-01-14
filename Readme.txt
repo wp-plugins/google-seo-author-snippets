@@ -1,10 +1,10 @@
 === Google SEO Pressor for Rich snippets === 
 Contributors: smackcoders 
-Donate link: https://www.smackcoders.com/donate.html
+Donate link: http://www.smackcoders.com/donate.html
 Tags: Google, plugin, admin, comments, twitter, links, author, custom, dashboard, seo, all in one seo, yoast seo, twitter cards, structured data, microdata, microformat, Rich snippets, Breadcrumbs, Events, Music, Organizations, People, Products, Recipes, Review ratings, Reviews, Software applications, Videos, Facebook , Share, RDFa, schema.org , markup, automation, search, schema, 
-Requires at least: 3.9
-Tested up to: 4.0
-Stable tag: 1.2.1
+Requires at least: 3.8
+Tested up to: 4.1
+Stable tag: 1.2.2
 Author: smackcoders
 Author URI: http://profiles.wordpress.org/smackcoders/
 License: GPLv2 or later
@@ -16,8 +16,6 @@ Automate Google Structured data for your wordpress built specially for SEO and s
 Google SEO Author Snippet Plugin is now Google SEO Pressor for Rich snippets. Now you can automate Google Structured data for your wordpress posts, pages, custom posts and categories wide easily using Google SEO Pressor for Rich snippets.  
 
 Refer - https://support.google.com/webmasters/topic/21997?hl=en&ref_topic=1724122 and https://support.google.com/webmasters/answer/146897
-
-[Read More From Plugin Wiki](http://wiki.smackcoders.com/WP_Google_SEO_Author_Snippet_Version_1.2.0)
 
 Supports all snippets as recommended by google.
 ------------------------- 
@@ -51,9 +49,9 @@ Don't hesitate to pass your comments, feedback and suggestions. Visit our [Smack
 
 To begin making your WordPress more SEO optimized for google:
 
-1. Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.
+    Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
+    Activate the plugin through the 'Plugins' menu in WordPress
+    Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.
 
 
 == Screenshots == 
@@ -64,6 +62,12 @@ To begin making your WordPress more SEO optimized for google:
 4. Preview form placed in widget area to the front-end. 
 
 == Changelog == 
+
+= 1.2.2 =
+* Added: WordPress 4.1 compatibility checked.
+* Added: Google rich snippets for Reviews 
+* Fixed: Clients side issues and warnings
+* Fixed: UI works fixed 
 
 = 1.2.1 =
 * Modified: Menu Order changes added to avoid the blank page issues.
@@ -90,28 +94,30 @@ To begin making your WordPress more SEO optimized for google:
 
 = 1.1.0 =	Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
 
-= 1.0.1 =		Image Conflicts Bug Fixed, Added Extra Social Icon sets.
+= 1.0.1 =	Image Conflicts Bug Fixed, Added Extra Social Icon sets.
 
-= 1.0.0 =		Initial release version. Tested and found works well without any issues. 
+= 1.0.0 =	Initial release version. Tested and found works well without any issues. 
 
 
 == Upgrade Notice == 
 
-=v 1.2.1=	Upgrade for dynamic debug mode enable/disable feature.
+= 1.2.2 =   Upgrade for reviews and bug fixes
+
+= 1.2.1 =	Upgrade for dynamic debug mode enable/disable feature.
 
 = 1.2.0 =	Upgrade for newly added new snippets and automation
 
 = 1.1.0 =	Bug fix - Important bug fix, IE Compatible added. Now compatible with WordPress-3.5.
 
-= 1.0.1 =		Bug fix - Image conflicts, Added Extra Social Icon sets.
+= 1.0.1 =	Bug fix - Image conflicts, Added Extra Social Icon sets.
 
-= 1.0.0 =		Initial release of plugin 
+= 1.0.0 =	Initial release of plugin 
 
 
 == Frequently Asked Questions == 
 
 How to install? 
 
-* Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
-* Activate the plugin through the 'Plugins' menu in WordPress
-* Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.
+Upload the 'google-seo-author-snippets.zip' file from the Plugins->Add New page in the WordPress administration panel.
+Activate the plugin through the 'Plugins' menu in WordPress
+Go to Settings menu under 'Google SEO Pressor Rich Snippets' and start activating the security features of the plugin.

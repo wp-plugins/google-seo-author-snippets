@@ -2,16 +2,13 @@
 class ADD_META_BOX {
 	protected $meta_box;
 	//Create meta box based on given data
-	function __construct( $meta_box )
-	{
+	function __construct( $meta_box )  {
 		$this->_meta_box = $meta_box;
-
-		add_action( 'add_meta_boxes', array( &$this, 'add' ) ); 
+        	add_action( 'add_meta_boxes', array( &$this, 'add' ) ); 
 		add_action( 'save_post', array( &$this, 'save' ) );
 	}
 	//Add meta box for multiple post types
-	function add()
-	{
+	function add() {
 		global $wpdb;
                 $post_var=get_option('post_check');
                 foreach( $post_var as $page =>$value )
@@ -27,39 +24,60 @@ class ADD_META_BOX {
 		}
 	}
 	function save($post_id){
+
 		$people=$this->_meta_box['people_fields'];
                 foreach($people as $people_field) {
-                $key = $people_field['id']; 
-		update_post_meta($post_id,$key,$_POST[$key]);
+                $key = $people_field['id'];
+                if(!empty($_POST[$key])) 
+		        update_post_meta($post_id,$key,$_POST[$key]);
                  }
                 foreach($this->_meta_box['org_fields'] as $org_field) {
-                $org_key = $org_field['id']; 
+                $org_key = $org_field['id'];
+                  if(!empty($_POST[$org_key])) 
                 update_post_meta($post_id,$org_key,$_POST[$org_key]);
                  } 
                 foreach($this->_meta_box['events_fields'] as $event_field) {
                 $event_key = $event_field['id']; 
+                  if(!empty($_POST[$event_key]))
                 update_post_meta($post_id,$event_key,$_POST[$event_key]);
                  } 
                foreach($this->_meta_box['product_fields'] as $product_field) {
-                $product_key = $product_field['id']; 
+                $product_key = $product_field['id'];
+                  if(!empty($_POST[$product_key]))  
                 update_post_meta($post_id,$product_key,$_POST[$product_key]);
                  } 
                 foreach($this->_meta_box['music_fields'] as $music_field) {
-                $music_key = $music_field['id']; 
+                $music_key = $music_field['id'];
+                  if(!empty($_POST[$music_key]))  
                 update_post_meta($post_id,$music_key,$_POST[$music_key]);
                  } 
                 foreach($this->_meta_box['receipes_fields'] as $receipes_field) {
-                $receipes_key = $receipes_field['id']; 
+                $receipes_key = $receipes_field['id'];
+                  if(!empty($_POST[$receipes_key]))  
                 update_post_meta($post_id,$receipes_key,$_POST[$receipes_key]);
                  } 
                 foreach($this->_meta_box['software_fields'] as $software_field) {
-                $software_key = $software_field['id']; 
+                $software_key = $software_field['id'];
+                  if(!empty($_POST[$software_key])) 
                 update_post_meta($post_id,$software_key,$_POST[$software_key]);
                  } 
                 foreach($this->_meta_box['videos_fields'] as $videos_field) {
-                $videos_key = $videos_field['id']; 
+                         $videos_key = $videos_field['id'];
+                  if(!empty($_POST[$videos_key])) 
                 update_post_meta($post_id,$videos_key,$_POST[$videos_key]);
-                 } 
+                 }
+		$review = $this->_meta_box['review_fields'];
+		foreach($review as $review_fields){
+		   $review_key = $review_fields['id'];
+		 if(!empty($_POST[$review_key]))
+		  update_post_meta($post_id,$review_key,$_POST[$review_key]);
+		}
+		$review_rating = $this->_meta_box['review_rating_fields'];
+		foreach($review_rating as $review_rating_fields){
+		  $review_rating_key = $review_rating_fields['id'];
+		 if(!empty($_POST[$review_rating_key]))
+		   update_post_meta($post_id,$review_rating_key,$_POST[$review_rating_key]);
+		}
   
 	}
 
@@ -76,8 +94,14 @@ class ADD_META_BOX {
  ,'google_snippetsreceipes_ingredient','google_snippetsreceipes_ingredient_amount','google_snippetsreceipes_servingsize'
  ,'google_snippetsreceipes_calories','google_snippetsreceipes_fat','google_snippetsreceipes_instructions'
  ,'google_snippetssoftware_name','google_snippetssoftware_description','google_snippetssoftware_url','google_snippetssoftware_image'  ,'google_snippetssoftware_author','google_snippetssoftware_aggregate_rating','google_snippetssoftware_reveiws','google_snippetssoftware_content_rating','google_snippetssoftware_operationg_systems','google_snippetssoftware_category','google_snippetssoftware_version','google_snippetssofware_interaction_count','google_snippetssofware_review_count','google_snippetssofware_review_author','google_snippetssofware_review_publish_date','google_snippetssofware_review_description','google_snippetssofware_price','google_snippetsvideo_name','google_snippetsvideo_image_src','google_snippetsvideo_video_src','google_snippetsupload_date','google_snippetsexpire_date','google_snippetsembed_url','google_snippetsvideo_description','google_snippetsvideo_type','google_snippetsvideo_duration' );
+		$custom_fields = array();
+		
                 $custom_fields = get_post_custom_keys($post->ID);
+		if(isset($custom_fields)){
+		//$custom_fields = array($custom_fields);
+		//$custom_field_keys = array();
                 $custom_field_keys = array_merge($custom_fields,$post_values);
+		}
             //    print_r($custom_field_keys);die;
                 // foreach ( $custom_field_keys as $key => $value ) {
                 // $valuet = trim($value);
@@ -148,7 +172,7 @@ class ADD_META_BOX {
                         </div><?php } ?>
                         </td>-->
                          <td><?php
-		         if($field['type']=='datepicker'){
+		         if(isset($field['type']) && ($field['type'] =='datepicker')){
                                    echo '<input type="date" id="'.$field['id'].'" name="'.$field['id'].'" value="'.$value.'" />';
                        echo '<script type="text/javascript">'.
                      '       jQuery(document).ready(function($) {'.
@@ -158,7 +182,7 @@ class ADD_META_BOX {
                      '          });'.
                      '       });'.
                      '</script>';
-			}elseif($field['type'] == 'textarea'){ 
+			}elseif(isset($field['type'] ) && ($field['type'] == 'textarea')){ 
 			     	echo '<textarea id="'.$field['id'].'" name="'.$field['id'].'"   row = "10" col ="10" class = "large_text" rows="2">'.$value.' </textarea>';
                                  }
                          else { ?>
@@ -181,7 +205,7 @@ class ADD_META_BOX {
                          <label for="google_seo_meta_title"><?php  _e( $org_title );  ?></label>
                           </th>
                           <td><?php
-		         if($org_field['type']=='datepicker'){
+		         if(isset($org_field['type']) && ($org_field['type']=='datepicker')){
                                    echo '<input type="date" id="'.$org_field['id'].'" name="'.$org_field['id'].'" value="'.$org_value.'" />';
                        echo '<script type="text/javascript">'.
                      '       jQuery(document).ready(function($) {'.
@@ -192,7 +216,7 @@ class ADD_META_BOX {
                      '       });'.
                      '</script>';
 			}
-                         elseif($org_field['type'] == 'textarea'){ 
+                         elseif(isset($org_field['type']) && ($org_field['type'] == 'textarea')){ 
                                 echo '<textarea id="'.$org_field['id'].'" name="'.$org_field['id'].'"   class = "large_text" rows="2">'.$org_value.' </textarea>';
                                  }
                             else{ ?>
@@ -216,7 +240,7 @@ class ADD_META_BOX {
                          <label for="google_seo_meta_title"><?php  _e( $event_title );  ?></label>
                           </th>
                           <td><?php
-		         if($event_field['type']=='datepicker'){
+		         if(isset($event_field['type'] ) && ($event_field['type']=='datepicker')){
                                    echo '<input type="date" id="'.$event_field['id'].'" name="'.$event_field['id'].'" value="'.$event_value.'" />';
                        echo '<script type="text/javascript">'.
                      '       jQuery(document).ready(function($) {'.
@@ -227,7 +251,7 @@ class ADD_META_BOX {
                      '       });'.
                      '</script>';
 			}
-                       else if($event_field['type'] == 'textarea'){ 
+                       else if(isset($event_field['type']) && ($event_field['type'] == 'textarea')){ 
                                 echo '<textarea id="'.$event_field['id'].'" name="'.$event_field['id'].'"   class = "large_text" rows="2">'.$event_value.' </textarea>';
                                  }
 
@@ -261,9 +285,12 @@ class ADD_META_BOX {
                         </div><?php } ?>
                         </td>
                           <td><?php
-                                 foreach(get_option('auto') as $auto_key => $auto_val) { if($auto_key == 'product') { 
-                                  $manual_product = 'on'; } else { $manual_product = 'off'; }  }
-                                if($manual_product != 'on') {
+				 $get_auto = get_option('auto');
+				 if(!empty($get_auto)){
+				  $manual_product = '';
+                                 foreach($get_auto as $auto_key => $auto_val) { if($auto_key == 'product') { 
+                                  $manual_product = 'on'; } else { $manual_product = 'off'; }  }}
+                                if(isset($manual_product) && ($manual_product != 'on')) {
 		         if($product_field['type']=='datepicker'){
                                    echo '<input type="date" id="'.$product_field['id'].'" name="'.$product_field['id'].'" value="'.$product_value.'" />';
                        echo '<script type="text/javascript">'.
@@ -291,10 +318,10 @@ class ADD_META_BOX {
                       <?php if($product_field['type'] != 'checkbox' ) {
                        ?> 
                            <select class="large_text" id="<?php echo $product_field['id'] ?>"  name= "<?php echo $product_field['id'] ?>" />                    <option value ="<?php  echo $product_value;?> " > <?php echo $product_value; ?> </option>
-                           <?php foreach ( $custom_field_keys as $cf_key => $cf_val ) {
+                           <?php if(isset($custom_field_keys)){foreach ( $custom_field_keys as $cf_key => $cf_val ) {
                            if((!in_array($cf_val, $google ,TRUE)) && ($cf_val != '_edit_last') && ($cf_val != '_edit_lock'))  { ?>
                            <?php if((isset($cf_val)) && (trim($cf_val)) ) ?>
-                           <option value= "<?echo $cf_val;?>"> <?php echo $cf_val;?>  <option>     <?php } } ?>
+                           <option value= "<?echo $cf_val;?>"> <?php echo $cf_val;?>  <option>     <?php } }} ?>
                            </select>    
                       <?php } else { ?>
                               <div style = "float:left"> <?php
@@ -319,7 +346,7 @@ class ADD_META_BOX {
                          <label for="google_seo_meta_title"><?php  _e( $music_title );  ?></label>
                           </th>
                           <td><?php
-		         if($music_field['type']=='datepicker'){
+		         if(isset($music_field['type']) && ($music_field['type']=='datepicker')){
                                    echo '<label>'.$music_field['name'].'</label><input type="date" id="'.$music_field['id'].'" name="'.$music_field['id'].'" value="'.$music_value.'" />';
                        echo '<script type="text/javascript">'.
                      '       jQuery(document).ready(function($) {'.
@@ -350,7 +377,7 @@ class ADD_META_BOX {
                          <label for="google_seo_meta_title"><?php  _e( $receipes_title );  ?></label>
                           </th>
                           <td><?php
-		         if($receipes_field['type']=='datepicker'){
+		         if(isset($receipes_field['type']) && ($receipes_field['type']=='datepicker')){
                                    echo '<input type="date" id="'.$receipes_field['id'].'" name="'.$receipes_field['id'].'" value="'.$receipes_value.'" />';
                        echo '<script type="text/javascript">'.
                      '       jQuery(document).ready(function($) {'.
@@ -381,7 +408,7 @@ class ADD_META_BOX {
                          <label for="google_seo_meta_title"><?php  _e( $software_title );  ?></label>
                           </th>
                           <td><?php
-		         if($software_field['type']=='datepicker'){
+		         if(isset($software_field['type']) && ($software_field['type']=='datepicker')){
                                    echo '<input type="date" id="'.$software_field['id'].'" name="'.$software_field['id'].'" value="'.$software_value.'" />';
                        echo '<script type="text/javascript">'.
                      '       jQuery(document).ready(function($) {'.
@@ -392,7 +419,7 @@ class ADD_META_BOX {
                      '       });'.
                      '</script>';
 			}
-                        else if($software_field['type'] == 'textarea'){
+                        else if(isset($software_field['type']) && ($software_field['type'] == 'textarea')){
                                 echo '<textarea id="'.$software_field['id'].'" name="'.$software_field['id'].'"  class = "large_text" rows="2">'.$software_value.' </textarea>';
                                  }
 
@@ -417,7 +444,7 @@ class ADD_META_BOX {
                          <label for="google_seo_meta_title"><?php  _e( $videos_title );  ?></label>
                           </th>
                           <td><?php
-		         if($videos_field['type']=='datepicker'){
+		         if(isset($videos_field['type']) && ($videos_field['type']=='datepicker')){
                                    echo '<input type="date" id="'.$videos_field['id'].'" name="'.$videos_field['id'].'" value="'.$videos_value.'" />';
                        echo '<script type="text/javascript">'.
                      '       jQuery(document).ready(function($) {'.
@@ -450,7 +477,7 @@ class ADD_META_BOX {
                           <td><?php
                              $i = 1;
                              if($i ==1) {
-                         if($review_field['type']=='datepicker'){
+                         if(isset($review_field['type']) && ($review_field['type']=='datepicker')){
                                    echo '<input type="date" id="'.$review_field['id'].'" name="'.$review_field['id'].'" value="'.$review_value.'" />';
                        echo '<script type="text/javascript">'.
                      '       jQuery(document).ready(function($) {'.
@@ -510,7 +537,7 @@ $meta_box[]=array(
 			array( 'id'=>$prefix.'peoeple_locality', 'name'=>'Locality' ),
 			array( 'id'=>$prefix.'people_region', 'name'=>'Region'),
 			array( 'id'=>$prefix.'people_postal_code', 'name'=>'Postal Code'),
-			array( 'id'=>$prefix.'people_country_name','name'=>'country_name'),
+			array( 'id'=>$prefix.'people_country_name','name'=>'Country Name'),
 			array( 'id'=>$prefix.'people_title', 'name'=>'Person Title'),
 			array( 'id'=>$prefix.'people_affliation', 'name'=>'Affiliation' ),
 			array( 'id'=>$prefix.'people_friend_name', 'name'=>'Friend Name'),

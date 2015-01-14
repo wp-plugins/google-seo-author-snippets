@@ -1,7 +1,7 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) exit;
 
-function google_seo_schema_software($post) {
+function google_seo_schema_software($text) {
          global $post;
          $prefix = 'google_snippets';
        // Get the product values for schema
@@ -14,10 +14,10 @@ function google_seo_schema_software($post) {
         $google_seo_software_reveiws = get_post_meta( $post->ID, $prefix.'software_reveiws', true );
         $google_seo_software_offer = get_post_meta( $post->ID, $prefix.'software_offer', true );
         $google_seo_software_content_rating = get_post_meta( $post->ID, $prefix.'software_content_rating', true );
-      //  $google_seo_software_date_published = get_post_meta( $post->ID, $prefix.'software_date_published', true );
+        $google_seo_software_date_published = get_post_meta( $post->ID, $prefix.'software_date_published', true );
       //  $google_seo_software_inlanguage = get_post_meta( $post->ID, $prefix.'software_inlanguage', true );
         $google_seo_software_operationg_systems = get_post_meta( $post->ID, $prefix.'software_operating_systems', true );
-      //  $google_seo_software_filesize = get_post_meta( $post->ID, $prefix.'software_filesize', true );
+        $google_seo_software_filesize = get_post_meta( $post->ID, $prefix.'software_filesize', true );
        // $google_seo_software_file_format = get_post_meta( $post->ID, $prefix.'software_file_format', true );
         $google_seo_software_category = get_post_meta( $post->ID, $prefix.'software_category', true );
       //  $google_seo_sofware_sub_category = get_post_meta( $post->ID, $prefix.'sofware_sub_category', true );
@@ -32,11 +32,11 @@ function google_seo_schema_software($post) {
         $google_seo_sofware_price = get_post_meta( $post->ID, $prefix.'sofware_price', true );
      //   $google_seo_software_installurl = get_post_meta( $post->ID, $prefix.'software_installurl', true );
       //  $google_seo_software_requiered_features = get_post_meta( $post->ID, $prefix.'software_requiered_features', true );
-       // $google_seo_software_interaction_count = get_post_meta( $post->ID, $prefix.'software_interaction_count', true );
+        $google_seo_software_interaction_count = get_post_meta( $post->ID, $prefix.'software_interaction_count', true );
        // $google_seo_software_videos = get_post_meta( $post->ID, $prefix.'software_videos', true );
        // $google_seo_software_screenshot = get_post_meta( $post->ID, $prefix.'software_screenshot', true );
        // $google_seo_software_permission = get_post_meta( $post->ID, $prefix.'software_permission', true );
-         
+        $google_seo_schema_software =""; 
         $google_seo_schema_software .= ' <div itemscope itemtype="http://schema.org/SoftwareApplication">';
         $google_seo_schema_software .= '<span style="visibility: hidden;">';
         $google_seo_schema_software .= ' <img itemprop="image" src="'.$google_seo_software_image.'" />';
