@@ -39,44 +39,52 @@ function google_seo_schema_software($text) {
         $google_seo_schema_software =""; 
         $google_seo_schema_software .= ' <div itemscope itemtype="http://schema.org/SoftwareApplication">';
         $google_seo_schema_software .= '<span style="visibility: hidden;">';
+	if(isset($google_seo_software_image))
         $google_seo_schema_software .= ' <img itemprop="image" src="'.$google_seo_software_image.'" />';
-        $google_seo_schema_software .= ' <span itemprop="name">'.$google_seo_software_name.'</span> - 
+	if(isset($google_seo_software_name))
+        $google_seo_schema_software .= ' <span itemprop="name">'.$google_seo_software_name.'</span> - ';
+	if(isset($google_seo_software_url) || isset($google_seo_software_name))
+	$google_seo_schema_software .= '
         <div itemprop="author" itemscope itemtype="http://schema.org/Organization">';
         $google_seo_schema_software .= '<a itemprop="url" href="'.$google_seo_software_url.'"><span itemprop="name">'.$google_seo_software_name.'</span></a>
 </div>';
-
+	if(isset($google_seo_software_description))
         $google_seo_schema_software .= '<span itemprop="description">'.$google_seo_software_description.' </span>';
-        $google_seo_schema_software .= 'CONTENT RATING: <span itemprop="contentRating">'.$google_seo_software_content_rating.'</span>
-        UPDATED: <time itemprop="datePublished" datetime="'.$google_seo_software_date_published.'">'.$google_seo_software_date_published.'</time>';
+	if(isset($google_seo_software_content_rating))
+        $google_seo_schema_software .= 'CONTENT RATING: <span itemprop="contentRating">'.$google_seo_software_content_rating.'</span>';
+	if(isset($google_seo_software_date_published))
+	$google_seo_schema_software .= 'UPDATED: <time itemprop="datePublished" datetime="'.$google_seo_software_date_published.'">'.$google_seo_software_date_published.'</time>';
+	if(isset($google_seo_software_operationg_systems) || isset($google_seo_software_version))
         $google_seo_schema_software .= 'REQUIRES <span itemprop="operatingSystems">'.$google_seo_software_operationg_systems.'</span>: <span itemprop="operatingSystemVersion">'.$google_seo_software_version.'</span> and up';
         $google_seo_schema_software .= '<link itemprop="SoftwareApplicationCategory" href="http://schema.org/GameApplication"/>';
+	if(isset($google_seo_software_category) || isset($google_seo_software_filesize))
         $google_seo_schema_software .= 'CATEGORY: <span itemprop="SoftwareApplicationSubCategory">'.$google_seo_software_category.'</span>
         SIZE:'.$google_seo_software_filesize;
         $google_seo_schema_software .= '<meta itemprop="fileSize" content="'.$google_seo_software_filesize.'"/>';
         $google_seo_schema_software .= 'INSTALLS: <meta itemprop="interactionCount" content=”UserDownloads:'.$google_seo_software_interaction_count.'"/>'.$google_seo_software_interaction_count.'
         RATING:';
         $google_seo_schema_software .= '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
+	if(isset($google_seo_software_aggregate_rating) || isset($google_seo_sofware_review_count))
         $google_seo_schema_software .= '<span itemprop="ratingValue">'.$google_seo_software_aggregate_rating.'</span>( <span itemprop="ratingCount">'.$google_seo_sofware_review_count.'</span>)';
         $google_seo_schema_software .= '<meta itemprop="reviewCount" content="'.$google_seo_sofware_review_count.'" />
                                          </div>';
 
-        $google_seo_schema_software .= '<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                         Price: <span itemprop="price">$'.$google_seo_sofware_price.'</span>';
+        $google_seo_schema_software .= '<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">';
+	if(isset($google_seo_sofware_price))
+	$google_seo_schema_software .= ' Price: <span itemprop="price">$'.$google_seo_sofware_price.'</span>';
         $google_seo_schema_software .= '<meta itemprop="priceCurrency" content="USD" />';
         $google_seo_schema_software .= '<link itemprop="availability" href="http://schema.org/InStock" />INSTALL
                                         </div>';
         $google_seo_schema_software .= ' Reviews:  <div itemprop="reviews" itemscope itemtype="http://schema.org/Review">';
+	if(isset($google_seo_software_content_rating) || isset($google_seo_sofware_review_author))
         $google_seo_schema_software .= '<span itemprop="reviewRating">'.$google_seo_software_content_rating.'</span> stars -
  
   <span itemprop="author">'.$google_seo_sofware_review_author.'</span>,';
-        $google_seo_schema_software .= ' Written on <time itemprop="publishDate" datetime="'.$google_seo_sofware_review_publish_date.'">'.$google_seo_sofware_review_publish_date.'</time>
- <span itemprop="reviewBody">'.$google_seo_sofware_review_description.' </span>
-</div>
-
-…
-
-
-</span>
+	if(isset($google_seo_sofware_review_publish_date))
+        $google_seo_schema_software .= ' Written on <time itemprop="publishDate" datetime="'.$google_seo_sofware_review_publish_date.'">'.$google_seo_sofware_review_publish_date.'</time>';
+	if(isset($google_seo_sofware_review_description))
+	$google_seo_schema_software .= ' <span itemprop="reviewBody">'.$google_seo_sofware_review_description.' </span>';
+	$google_seo_schema_software .= '</div></span>
 </div>';
  return $text.$google_seo_schema_software;
 

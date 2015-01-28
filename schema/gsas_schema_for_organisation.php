@@ -19,16 +19,23 @@ function google_seo_schema_organisation($text) {
         $google_seo_schema_organisation = '';
         $google_seo_schema_organisation .= '<div vocab="http://schema.org/" typeof="Organization"> ';
         $google_seo_schema_organisation .= '<span style="visibility: hidden;">';
+	if(isset($google_seo_organisation_name))
         $google_seo_schema_organisation .= '<span property="name">'.$google_seo_organisation_name.'</span>'; 
-        $google_seo_schema_organisation .= 'Located at <div property="address" typeof="PostalAddress">
-                                            <span property="streetAddress">'.$google_seo_organisation_street_address.'</span>,';
+        $google_seo_schema_organisation .= 'Located at <div property="address" typeof="PostalAddress">';
+	if(isset($google_seo_organisation_street_address))
+        $google_seo_schema_organisation .='<span property="streetAddress">'.$google_seo_organisation_street_address.'</span>,';
+	if(isset($google_seo_organisation_address_locality))
         $google_seo_schema_organisation .= '<span property="addressLocality">'.$google_seo_organisation_address_locality.'</span>,';
-        $google_seo_schema_organisation .= '<span property="addressRegion">'.$google_seo_organisation_address_region.'</span>.
-                                            </div>';
+	if(isset($google_seo_organisation_address_region))
+        $google_seo_schema_organisation .= '<span property="addressRegion">'.$google_seo_organisation_address_region.'</span>.';
+        $google_seo_schema_organisation .= '</div>';
+	if(isset($google_seo_organisation_logo))
         $google_seo_schema_organisation .='<img property="logo" src="'.$google_seo_organisation_logo.'" />';
+	if(isset($google_seo_organisation_telephone))
         $google_seo_schema_organisation .= 'Phone: <span property="telephone">'.$google_seo_organisation_telephone.'</span>';
-        $google_seo_schema_organisation .= '<a href="'.$google_seo_organisation_url.'" property="url">'.$google_seo_organisation_url.'</a>
-                                         </span>  </div>';
+	if(isset($google_seo_organisation_url))
+        $google_seo_schema_organisation .= '<a href="'.$google_seo_organisation_url.'" property="url">'.$google_seo_organisation_url.'</a>';
+	$google_seo_schema_organisation .= '</span>  </div>';
        return $text.$google_seo_schema_organisation;
 }
 

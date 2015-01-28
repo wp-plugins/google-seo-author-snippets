@@ -17,17 +17,35 @@ function google_seo_schema_music($text) {
         $google_seo_schema_music = '';
         $google_seo_schema_music .= '<div itemscope itemtype="http://schema.org/MusicGroup">';
         $google_seo_schema_music .= '<span style="visibility: hidden;">';
-        $google_seo_schema_music .= '<h1 itemprop="name">'.$google_seo_music_group.'</h1>';
+	if(isset($google_seo_music_group)){
+         	$google_seo_schema_music .= '<h1 itemprop="name">'.$google_seo_music_group.'</h1>'; 
+	}
         $google_seo_schema_music .= '<h2>Songs</h2>
                                      <div itemprop="tracks" itemscope itemtype="http://schema.org/MusicRecording">';
-        $google_seo_schema_music .= '<span itemprop="name">'.$google_seo_track_name.'</span>';
-        $google_seo_schema_music .= 'Length: <meta itemprop="duration" content="" />'.$google_seo_track_length.'-'.$google_seo_play_count ;
-        $google_seo_schema_music .= '<meta itemprop="interactionCount" content="UserPlays:'.$google_seo_play_count.'"/>';
-        $google_seo_schema_music .= '<a href="'.$google_seo_play_url.'" itemprop="audio">Play</a>';
-        $google_seo_schema_music .= ' <a href="'.$google_seo_buy_url.'" itemprop="offers">Buy</a>';
-        $google_seo_schema_music .= 'From album: <a href="'.$google_seo_album_link.'" itemprop="inAlbum">'.$google_seo_album_name.'</a>
-    </div>  '; 
-        $google_seo_schema_music .= '<a href="'.$google_seo_album_link.'" itemprop="url">Link</a> </span> </div>';
+	if(isset($google_seo_track_name)){
+         	$google_seo_schema_music .= '<span itemprop="name">'.$google_seo_track_name.'</span>';
+	}
+	if(isset($google_seo_track_length) || isset($google_seo_play_count )){
+        	$google_seo_schema_music .= 'Length: <meta itemprop="duration" content="" />'.$google_seo_track_length.'-'.$google_seo_play_count ;
+	}
+	if(isset($google_seo_play_count)){
+        	$google_seo_schema_music .= '<meta itemprop="interactionCount" content="UserPlays:'.$google_seo_play_count.'"/>';
+	}
+	if(isset($google_seo_play_url)){
+         	$google_seo_schema_music .= '<a href="'.$google_seo_play_url.'" itemprop="audio">Play</a>';
+	}
+	if(isset($google_seo_buy_url)){
+         	$google_seo_schema_music .= ' <a href="'.$google_seo_buy_url.'" itemprop="offers">Buy</a>';
+	}
+	if(isset($google_seo_album_link) || isset($google_seo_album_name)){
+	        $google_seo_schema_music .= 'From album: <a href="'.$google_seo_album_link.'" itemprop="inAlbum">'.$google_seo_album_name.'</a>';
+	}
+    	$google_seo_schema_music .= '</div>  '; 
+	if(isset($google_seo_album_link)){
+         	$google_seo_schema_music .= '<a href="'.$google_seo_album_link.'" itemprop="url">Link</a>';
+	}
+	$google_seo_schema_music .= ' </span> </div>';
+	
 
         return  $text.$google_seo_schema_music;
 }

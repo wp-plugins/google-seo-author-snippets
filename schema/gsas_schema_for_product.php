@@ -53,33 +53,41 @@ function google_seo_schema_product($text) {
         $google_seo_schema_product = '';
         $google_seo_schema_product .= '<div itemscope itemtype="http://data-vocabulary.org/Product">';
         $google_seo_schema_product .=    '<span style="visibility: hidden;">';
-           $product_name = $auto."product_name"; 
+           $product_name = $auto."product_name";
+	if(isset($product_name)) 
         $google_seo_schema_product .=   "<span itemprop='brand'>".$$product_name."</span> <span itemprop='name'>".$$product_name."</span>";
            $product_image = $auto."product_image";
+	if(isset($product_image))
         $google_seo_schema_product .=' <img  style="width:75px;height:75px;" itemprop="image" src="'.$$product_image.'" />';
            $product_description = $auto."product_description";
+	if(isset($product_description))
         $google_seo_schema_product .= '<span itemprop="description">' .$$product_description.' </span>';
            $product_cat = $auto."product_category";
+	if(isset($product_cat))
         $google_seo_schema_product .= 'Category: <span itemprop="category" content="'.$$product_cat.'">'.$$product_cat.'</span>';
            $product_sku = $auto."product_sku"; 
-       $google_seo_schema_product .= '  Product #: <span itemprop="identifier" content="'.$$product_sku.'">'.$$product_sku.'</span>';
-       $google_seo_schema_product .= '<span itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer">';
+	if(isset($product_sku))
+       	$google_seo_schema_product .= '  Product #: <span itemprop="identifier" content="'.$$product_sku.'">'.$$product_sku.'</span>';
+       	$google_seo_schema_product .= '<span itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer">';
            $product_regular_price  = $auto."offer_regular_price";      
-       $google_seo_schema_product .= 'Regular price:$' .$$product_regular_price.
+	if(isset($product_regular_price))
+       	$google_seo_schema_product .= 'Regular price:$' .$$product_regular_price.
                                     '<meta itemprop="priceCurrency" content="USD" />';
            $product_sale_price = $auto."offer_sale_price";        
+	if(isset($product_sale_price))
                                      '$<span itemprop="'.$$product_sale_price.'">'.$$product_sale_price.'</span>';
            $product_offer_valid_upto = $auto."offer_valid_upto";
-       $google_seo_schema_product .= ' (Sale ends <time itemprop="priceValidUntil" datetime="'.$$product_offer_valid_upto.'">!</time>) ';
+	if(isset($product_offer_valid_upto))
+        $google_seo_schema_product .= ' (Sale ends <time itemprop="priceValidUntil" datetime="'.$$product_offer_valid_upto.'">!</time>) ';
            $product_seller = $auto."product_seller";
            if(isset($product_seller)) 
-       $google_seo_schema_product .=' Available from: <span itemprop="'.$$product_seller.'">'.$$product_seller.'</span>';
+        $google_seo_schema_product .=' Available from: <span itemprop="'.$$product_seller.'">'.$$product_seller.'</span>';
            $product_offer = $auto."offer_condition";
-       $google_seo_schema_product .= 'Condition: <span itemprop="condition" content="Good"> Good </span>';
+        $google_seo_schema_product .= 'Condition: <span itemprop="condition" content="Good"> Good </span>';
            $product_stock = $auto."offer_stock"; 
-       $google_seo_schema_product .= '<span itemprop="availability" content="in_stock"> '.$$product_stock.'! Order now!</span>
-  </span> </span>
-</div>';
+	if(isset($product_stock))
+        $google_seo_schema_product .= '<span itemprop="availability" content="in_stock"> '.$$product_stock.'! Order now!</span>';
+	$google_seo_schema_product .= '</span> </span></div>';
  return  $text.$google_seo_schema_product;
 
  }
