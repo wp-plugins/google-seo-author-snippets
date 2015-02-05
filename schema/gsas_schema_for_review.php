@@ -39,7 +39,11 @@ function google_seo_schema_review($text) {
 }
 function google_seo_schema_add_review() {
  global $post;
- if(!is_home() ) {
+$prefix = 'google_snippets';
+$google_seo_schema_review = get_post_meta( $post->ID, $prefix.'review_item_reviewed', true );
+
+
+ if($google_seo_schema_review != '' && !is_home() ) {
  add_filter( "the_content", "google_seo_schema_review" );
  }
  }

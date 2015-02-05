@@ -321,7 +321,7 @@ class ADD_META_BOX {
                            <?php if(isset($custom_field_keys)){foreach ( $custom_field_keys as $cf_key => $cf_val ) {
                            if((!in_array($cf_val, $google ,TRUE)) && ($cf_val != '_edit_last') && ($cf_val != '_edit_lock'))  { ?>
                            <?php if((isset($cf_val)) && (trim($cf_val)) ) ?>
-                           <option value= "<?echo $cf_val;?>"> <?php echo $cf_val;?>  <option>     <?php } }} ?>
+                           <option value= "<?echo $cf_val;?>"> <?php echo $cf_val;?>  </option>     <?php } }} ?>
                            </select>    
                       <?php } else { ?>
                               <div style = "float:left"> <?php
@@ -534,6 +534,7 @@ $meta_box[]=array(
 			array( 'id'=>$prefix.'people_nick_name','name'=>'Nick Name','type'=>'Text','eg'=>'//Enter The People Nick Name ' ),
 			array( 'id'=>$prefix.'people_home_page_url', 'name'=>'Home page url'),
 			array( 'id'=>$prefix.'people_street_address', 'name'=>'Street Address','type' =>'textarea' ),
+			array( 'id'=>$prefix.'people_role', 'name'=>'Role','type'=>'Text'),
 			array( 'id'=>$prefix.'peoeple_locality', 'name'=>'Locality' ),
 			array( 'id'=>$prefix.'people_region', 'name'=>'Region'),
 			array( 'id'=>$prefix.'people_postal_code', 'name'=>'Postal Code'),
@@ -571,7 +572,7 @@ $meta_box[]=array(
                  'music_fields' => array(
                         array( 'id'=>$prefix.'music_group', 'name'=>'Music Group'),
                         array( 'id'=>$prefix.'track_name', 'name'=>'Track Name'),
-                        array( 'id'=>$prefix.'track_length', 'name'=>'Album Name' ),
+                        array( 'id'=>$prefix.'track_length', 'name'=>'Album Duration Time' ),
                         array( 'id'=>$prefix.'play_count', 'name'=>'No.of time plays' ),
                         array( 'id'=>$prefix.'play_url', 'name'=>'Play Track' ),
                         array( 'id'=>$prefix.'buy_url', 'name'=>'Buy Track ' ),
@@ -596,7 +597,7 @@ $meta_box[]=array(
                         array( 'id'=>$prefix.'product_name', 'name'=>'Product Name', 'type' => 'text'),
                         array( 'id'=>$prefix.'sku', 'name'=>'Sku' , 'type' => 'text' ),
                         array( 'id'=>$prefix.'product_image', 'name'=>'Product Image' ,'type'=> 'text'),
-                        array( 'id'=>$prefix.'product_description', 'name'=>'Product Description' ,'type' => 'textarea'),
+			array( 'id'=>$prefix.'product_price', 'name'=>'Price' ,'type'=> 'text'),
                         array( 'id'=>$prefix.'product_category', 'name'=>'Product Category','type' => 'text'),
                         array( 'id'=>$prefix.'product_currency', 'name'=>'Product Currency','type' => 'text'),
                         array( 'id'=>$prefix.'brand_name', 'name'=>'Brand Name','type' => 'text'),
@@ -633,7 +634,7 @@ $meta_box[]=array(
                                                                                        
 								     ),
 		'review_fields' => array(
-                         array( 'id'=>$prefix.'review_item_reviewed', 'name'=>'Item Reviewd' ),
+                         array( 'id'=>$prefix.'review_item_reviewed', 'name'=>'Item Reviewed' ),
                          array( 'id'=>$prefix.'review_rating', 'name'=>'Rating' ),
                          array( 'id'=>$prefix.'review_reviewer', 'name'=>'Reviewer' ),
                          array( 'id'=>$prefix.'review_date_reviewed', 'name'=>'Date Reviewed','type'=>'datepicker' ),

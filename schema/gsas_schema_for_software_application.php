@@ -55,7 +55,7 @@ function google_seo_schema_software($text) {
 	if(isset($google_seo_software_date_published))
 	$google_seo_schema_software .= 'UPDATED: <time itemprop="datePublished" datetime="'.$google_seo_software_date_published.'">'.$google_seo_software_date_published.'</time>';
 	if(isset($google_seo_software_operationg_systems) || isset($google_seo_software_version))
-        $google_seo_schema_software .= 'REQUIRES <span itemprop="operatingSystems">'.$google_seo_software_operationg_systems.'</span>: <span itemprop="operatingSystemVersion">'.$google_seo_software_version.'</span> and up';
+        $google_seo_schema_software .= 'REQUIRES <span itemprop="operatingSystems">'.$google_seo_software_operationg_systems.'</span>: <span itemprop="SoftwareVersion">'.$google_seo_software_version.'</span> and up';
         $google_seo_schema_software .= '<link itemprop="SoftwareApplicationCategory" href="http://schema.org/GameApplication"/>';
 	if(isset($google_seo_software_category) || isset($google_seo_software_filesize))
         $google_seo_schema_software .= 'CATEGORY: <span itemprop="SoftwareApplicationSubCategory">'.$google_seo_software_category.'</span>
@@ -71,7 +71,7 @@ function google_seo_schema_software($text) {
 
         $google_seo_schema_software .= '<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">';
 	if(isset($google_seo_sofware_price))
-	$google_seo_schema_software .= ' Price: <span itemprop="price">$'.$google_seo_sofware_price.'</span>';
+	$google_seo_schema_software .= ' Price: <span itemprop="price">'.$google_seo_sofware_price.'</span>';
         $google_seo_schema_software .= '<meta itemprop="priceCurrency" content="USD" />';
         $google_seo_schema_software .= '<link itemprop="availability" href="http://schema.org/InStock" />INSTALL
                                         </div>';
@@ -81,7 +81,7 @@ function google_seo_schema_software($text) {
  
   <span itemprop="author">'.$google_seo_sofware_review_author.'</span>,';
 	if(isset($google_seo_sofware_review_publish_date))
-        $google_seo_schema_software .= ' Written on <time itemprop="publishDate" datetime="'.$google_seo_sofware_review_publish_date.'">'.$google_seo_sofware_review_publish_date.'</time>';
+        $google_seo_schema_software .= ' Written on <time itemprop="dateCreated" datetime="'.$google_seo_sofware_review_publish_date.'">'.$google_seo_sofware_review_publish_date.'</time>';
 	if(isset($google_seo_sofware_review_description))
 	$google_seo_schema_software .= ' <span itemprop="reviewBody">'.$google_seo_sofware_review_description.' </span>';
 	$google_seo_schema_software .= '</div></span>

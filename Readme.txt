@@ -2,9 +2,9 @@
 Contributors: smackcoders 
 Donate link: http://www.smackcoders.com/donate.html
 Tags: Google, plugin, admin, comments, twitter, links, author, custom, dashboard, seo, all in one seo, yoast seo, twitter cards, structured data, microdata, microformat, Rich snippets, Breadcrumbs, Events, Music, Organizations, People, Products, Recipes, Review ratings, Reviews, Software applications, Videos, Facebook , Share, RDFa, schema.org , markup, automation, search, schema, 
-Requires at least: 3.8
+Requires at least: 4.1
 Tested up to: 4.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 Author: smackcoders
 Author URI: http://profiles.wordpress.org/smackcoders/
 License: GPLv2 or later
@@ -12,9 +12,8 @@ License: GPLv2 or later
 Automate Google Structured data for your wordpress built specially for SEO and social perspective. 
 
 == Description == 
-Now in version 1.2.3 we have fixed user reported bugs with review snippets.
 
-Google SEO Author Snippet Plugin is now Google SEO Pressor for Rich snippets. You can automate Google Structured data for your wordpress posts, pages, custom posts and categories wide easily using Google SEO Pressor for Rich snippets.  
+Now in version 1.2.4 with several bugs reported in forum and more schema added. Google SEO Author Snippet Plugin is now Google SEO Pressor for Rich snippets. You can automate Google Structured data for your wordpress posts, pages, custom posts and categories wide easily using Google SEO Pressor for Rich snippets.  
 
 Refer - https://support.google.com/webmasters/topic/21997?hl=en&ref_topic=1724122 and https://support.google.com/webmasters/answer/146897
 
@@ -64,6 +63,15 @@ To begin making your WordPress more SEO optimized for google:
 
 == Changelog == 
 
+= 1.2.4 =
+* Fixed: Web master Testing Tool Warnings
+* Empty schema content for music group
+* Schema invalid data operating system version in software            
+* Schema invalid data published date in software and item reviewed changed in review
+* Added: Role in Person
+* Added: Album Duration time in music
+* Added: Price in product
+
 = 1.2.3 =
 * Added: filled in information only display in schema
 * Fixed: some warnings fixed
@@ -106,7 +114,9 @@ To begin making your WordPress more SEO optimized for google:
 
 == Upgrade Notice == 
 
-= 1.2.3=    Upgrade for more bug fixes
+= 1.2.4 =    Upgrade for bug free experience
+
+= 1.2.3 =    Upgrade for more bug fixes
 
 = 1.2.2 =   Upgrade for reviews and bug fixes
 

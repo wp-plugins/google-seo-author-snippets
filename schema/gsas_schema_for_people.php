@@ -9,6 +9,7 @@ function google_seo_schema_people($text) {
         $google_seo_people_nick_name     = get_post_meta( $post->ID, $prefix.'people_nick_name', true );
         $google_seo_people_home_page_url = get_post_meta( $post->ID, $prefix.'people_home_page_url', true );
         $google_seo_people_street_address= get_post_meta( $post->ID, $prefix.'people_street_address', true );
+	$google_seo_people_role          = get_post_meta( $post->ID, $prefix.'people_role', true );
         $google_seo_peoeple_locality     = get_post_meta( $post->ID, $prefix.'peoeple_locality', true );
         $google_seo_people_region        = get_post_meta( $post->ID, $prefix.'people_region', true );
         $google_seo_people_postal_code   = get_post_meta( $post->ID, $prefix.'people_postal_code', true );
@@ -30,6 +31,8 @@ function google_seo_schema_people($text) {
         $google_seo_schema_people .= '<span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address">';
 	if(isset($google_seo_peoeple_locality))
         $google_seo_schema_people .= '<span itemprop="locality">'.$google_seo_peoeple_locality.'</span>, ';
+	if(isset($google_seo_people_role))
+        $google_seo_schema_people .= '<span itemprop="role">'.$google_seo_people_role.'</span>, ';
 	if(isset($google_seo_people_region))
         $google_seo_schema_people .= '<span itemprop="region">'.$google_seo_people_region.'</span>  </span>';
 	if(isset($google_seo_people_title))

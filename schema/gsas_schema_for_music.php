@@ -26,7 +26,7 @@ function google_seo_schema_music($text) {
          	$google_seo_schema_music .= '<span itemprop="name">'.$google_seo_track_name.'</span>';
 	}
 	if(isset($google_seo_track_length) || isset($google_seo_play_count )){
-        	$google_seo_schema_music .= 'Length: <meta itemprop="duration" content="" />'.$google_seo_track_length.'-'.$google_seo_play_count ;
+        	$google_seo_schema_music .= 'Length: <meta itemprop="duration" content="PT6M33S" />'.$google_seo_track_length.'-'.$google_seo_play_count ;
 	}
 	if(isset($google_seo_play_count)){
         	$google_seo_schema_music .= '<meta itemprop="interactionCount" content="UserPlays:'.$google_seo_play_count.'"/>';

@@ -11,6 +11,7 @@ function google_seo_schema_product($text) {
        // Get the product values for schema
         
 	$google_seo_product_name             = get_post_meta( $post->ID, $prefix.'product_name', true );
+	$google_seo_product_price            = get_post_meta( $post->ID, $prefix.'product_price', true );
 	$google_seo_product_sku              = get_post_meta( $post->ID, $prefix.'sku', true );
 	$google_seo_product_image            = get_post_meta( $post->ID, $prefix.'product_image', true );
 	$google_seo_product_description      = get_post_meta( $post->ID, $prefix.'product_description', true );
@@ -62,6 +63,9 @@ function google_seo_schema_product($text) {
            $product_description = $auto."product_description";
 	if(isset($product_description))
         $google_seo_schema_product .= '<span itemprop="description">' .$$product_description.' </span>';
+	$product_price = $auto."product_price";
+        if(isset($product_price))
+        $google_seo_schema_product .="<span itemprop='price'>".$$product_price."</span>";
            $product_cat = $auto."product_category";
 	if(isset($product_cat))
         $google_seo_schema_product .= 'Category: <span itemprop="category" content="'.$$product_cat.'">'.$$product_cat.'</span>';
@@ -94,7 +98,10 @@ function google_seo_schema_product($text) {
 
 function google_seo_schema_add_product() {
 global $post;
-if(!is_home() ) {
+$prefix = 'google_snippets';
+$google_seo_schema_product = get_post_meta( $post->ID, $prefix.'product_name', true );
+
+if($google_seo_schema_product != '' && !is_home() ) {
 add_filter( "the_content", "google_seo_schema_product" );
 }
 }

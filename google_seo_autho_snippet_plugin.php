@@ -1,9 +1,9 @@
 <?php 
 /*
 *Plugin Name: Google SEO Pressor Snippet Plugin
-*Plugin URI: http://www.smackcoders.com/google-seo-author-snippet-wordpress-plugin.html
+*Plugin URI: http://www.smackcoders.com/store/google-seo-author-snippet-wordpress-plugin.html
 *Description: A plugin that Manages the user's social profile details
-*Version: 1.2.3
+*Version: 1.2.4
 *Author: smackcoders.com
 *Author URI: http://www.smackcoders.com
 *
@@ -23,7 +23,7 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 *
-* @link http://www.smackcoders.com/google-seo-author-snippet-wordpress-plugin.html
+* @link http://www.smackcoders.com/store/google-seo-author-snippet-wordpress-plugin.html
 
 ***********************************************************************************************
 */
